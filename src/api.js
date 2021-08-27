@@ -7,11 +7,12 @@
 
 // mocks
 import farmStatus from "./mocks/farmStatus";
+import myLand from "./mocks/myLand";
 import plantDetail from "./mocks/plantDetail";
 
 export default class Controller {
   token;
-  test = false;
+  test = true;
   constructor(token) {
     this.token = token;
   }
@@ -49,14 +50,16 @@ export default class Controller {
   }
 
   async getMyLand() {
-    return await (
-      await fetch(
-        "https://backend-farm.plantvsundead.com/farms?limit=10&offset=0",
-        {
-          headers: this.getHeaders(this.token),
-        }
-      )
-    ).json();
+    return !this.test
+      ? await (
+          await fetch(
+            "https://backend-farm.plantvsundead.com/farms?limit=10&offset=0",
+            {
+              headers: this.getHeaders(this.token),
+            }
+          )
+        ).json()
+      : myLand;
   }
 
   async getPlantDetail(plantId) {
@@ -83,9 +86,10 @@ export default class Controller {
   getHeaders() {
     return {
       origin: "https://marketplace.plantvsundead.com",
-      referer: 'https://marketplace.plantvsundead.com/',
+      referer: "https://marketplace.plantvsundead.com/",
       Authorization: "Bearer " + this.token,
-      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36",
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36",
     };
   }
 }
