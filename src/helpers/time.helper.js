@@ -35,6 +35,12 @@ export function getCurrentMonthAndYear({ verbose = false }) {
     : format(new Date(), "M-yyy");
 }
 
+export function verboseDate(date) {
+  return format(new Date(date), "dd/MMMM/yyy h:m aaa", {
+    locale: es,
+  })
+}
+
 export function getDayFromDate(date) {
   return format(new Date(date), "dd");
 }

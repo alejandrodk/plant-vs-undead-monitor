@@ -6,20 +6,19 @@ import {
   Tree,
   UpdatedTimeWrapper,
   UpdatedTime,
+  UTCTime,
 } from "./MainStyles";
 
 import Header from "../Header/Header";
 import PlantsContainer from "../PlantsContainer/PlantsContainer";
-import {
-  getDateWithLocalOffset,
-  getTime12HVerbose,
-} from "../../helpers/time.helper";
+import { getTime12HVerbose } from "../../helpers/time.helper";
 import { format } from "date-fns";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("appToken"));
   const [farmActive, setFarmActive] = useState(false);
   const [lastUpdated, setLastUpdated] = useState(new Date());
+  const [utcTime, setUtcTime] = useState(getTime12HVerbose(new Date()));
 
   useEffect(() => {
     const timer = setInterval(async () => await refreshData(), 60 * 1000 * 30);
@@ -31,6 +30,14 @@ function App() {
 
     return () => clearInterval(timer);
   }, [token]);
+
+  useEffect(() => {
+    const time = setInterval(() => {
+      setUtcTime(getTime12HVerbose(new Date()));
+    }, 60000);
+
+    return () => clearInterval(time);
+  }, []);
 
   async function refreshData() {
     const controller = new Controller(token);
@@ -67,6 +74,7 @@ function App() {
             "h:mm aaa"
           )} | ${getTime12HVerbose(new Date())} UTC`}</UpdatedTime>
         </UpdatedTimeWrapper>
+        <UTCTime>{"Hora UTC " + utcTime}</UTCTime>
       </Container>
     </React.Fragment>
   );

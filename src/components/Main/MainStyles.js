@@ -50,3 +50,17 @@ export const UpdatedTimeWrapper = styled.div`
 export const UpdatedTime = styled.h3`
   color: white;
 `;
+
+export const UTCTime = styled.span`
+  position: fixed;
+  bottom: 10%;
+  right: 5%;
+  padding: 20px;
+  background: #aafa5f;
+  border: 4px solid #333;
+  box-shadow: 0 8px 0 rgb(0 0 0 / 20%), inset 0 -5px 0 #90d450,
+    inset 0 5px 0 #b8fa7a;
+  border-radius: 36px;
+  color: black;
+  font-family: Luckiest Guy;
+`;

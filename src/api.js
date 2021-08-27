@@ -12,7 +12,7 @@ import plantDetail from "./mocks/plantDetail";
 
 export default class Controller {
   token;
-  test = true;
+  test = false;
   constructor(token) {
     this.token = token;
   }

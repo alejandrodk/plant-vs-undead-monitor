@@ -1,3 +1,5 @@
+import { getDateWithLocalOffset, verboseDate } from "../../helpers";
+
 import {
   LandSVG,
   Plant,
@@ -7,6 +9,9 @@ import {
   PlantDataWrapper,
   PlantImageContainer,
   PlantSVG,
+  ActiveItemsWrapper,
+  PlantActiveItem,
+  PlantActiveItemQuantity,
 } from "./PlantStyles";
 
 function PlantComp(props) {
@@ -22,13 +27,26 @@ function PlantComp(props) {
       <PlantDataContainer>
         <PlantDataWrapper>
           <PlantDataTitle>creada: </PlantDataTitle>
-          <PlantDataValue>{plant?.createdAt}</PlantDataValue>
+          <PlantDataValue>{verboseDate(plant?.createdAt)}</PlantDataValue>
         </PlantDataWrapper>
         <PlantDataWrapper>
           <PlantDataTitle>necesita agua?: </PlantDataTitle>
           <PlantDataValue>{plant?.needWater ? "si" : "no"}</PlantDataValue>
         </PlantDataWrapper>
       </PlantDataContainer>
+      <ActiveItemsWrapper>
+        {plant?.activeTools.map((tool) => (
+          <PlantActiveItem
+            key={tool.id}
+            type={tool.type}
+            title={`finaliza el: ${getDateWithLocalOffset(
+              new Date(tool.endTime)
+            )}`}
+          >
+            <PlantActiveItemQuantity>{tool.count}</PlantActiveItemQuantity>
+          </PlantActiveItem>
+        ))}
+      </ActiveItemsWrapper>
     </Plant>
   );
 }
