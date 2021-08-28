@@ -4,7 +4,7 @@ import Controller from "../../api";
 import { Container, Tool, ToolImg, Quantity, Space } from "./MyToolsStyles";
 
 const HeaderComp = ({ token }) => {
-  const [tools, setTools] = useState(0);
+  const [tools, setTools] = useState(null);
 
   useEffect(() => {
     if (!tools) {

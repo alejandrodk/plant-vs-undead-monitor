@@ -21,7 +21,7 @@ function PlantsContainerComp(props) {
 
   return (
     <React.Fragment>
-      <PlantsContainerTitle>Mis plantas</PlantsContainerTitle>
+      <PlantsContainerTitle>Mi granja</PlantsContainerTitle>
       <PlantsContainer>
         {plants && plants.map((plant, ix) => <Plant plant={plant} key={ix} />)}
       </PlantsContainer>

@@ -12,6 +12,7 @@ import {
 
 import Header from "../Header/Header";
 import StatsHeader from "../StatsHeader/StatsHeader";
+import PriceConvert from "../PriceConvert/PriceConvert";
 import MyTools from "../MyTools/MyTools";
 import PlantsContainer from "../PlantsContainer/PlantsContainer";
 import { getTime12HVerbose } from "../../helpers/time.helper";
@@ -63,8 +64,13 @@ function App() {
     <React.Fragment>
       <Header setToken={setToken} farmActive={farmActive} token={token} />
       <DataBar>
-        <MyTools token={token} />
-        <StatsHeader token={token} />
+        {farmActive && (
+          <React.Fragment>
+            <MyTools token={token} />
+            <StatsHeader token={token} />
+          </React.Fragment>
+        )}
+        <PriceConvert token={token} />
       </DataBar>
       <Container>
         {farmActive ? (
