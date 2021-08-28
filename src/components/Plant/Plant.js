@@ -17,7 +17,7 @@ import {
 function PlantComp(props) {
   const { plant } = props;
   return (
-    <Plant>
+    <Plant water={plant.needWater}>
       <PlantImageContainer>
         <PlantSVG src={plant?.plant?.iconUrl} />
         <LandSVG

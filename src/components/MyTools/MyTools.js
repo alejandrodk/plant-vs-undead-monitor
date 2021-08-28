@@ -13,7 +13,7 @@ const HeaderComp = ({ token }) => {
         const { data } = await controller.myTools();
 
         if (data) {
-          setTools(data);
+          setTools(data.filter(tool => tool.usages));
         }
       })();
     }
@@ -40,8 +40,8 @@ const HeaderComp = ({ token }) => {
     <Container>
       {tools &&
         tools.map((tool, ix) => (
-          <React.Fragment>
-            <Tool>
+          <React.Fragment key={ix}>
+            <Tool key={ix}>
               <ToolImg src={getImage(tool.name)} alt={tool.name} />
               <Quantity>{tool.usages}</Quantity>
             </Tool>

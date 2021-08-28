@@ -23,7 +23,11 @@ function PlantsContainerComp(props) {
     <React.Fragment>
       <PlantsContainerTitle>Mi granja</PlantsContainerTitle>
       <PlantsContainer>
-        {plants && plants.map((plant, ix) => <Plant plant={plant} key={ix} />)}
+        {plants &&
+          [
+            ...plants.filter((plant) => plant.needWater == true),
+            ...plants.filter((plant) => plant.needWater == false),
+          ].map((plant, ix) => <Plant plant={plant} key={ix} />)}
       </PlantsContainer>
     </React.Fragment>
   );

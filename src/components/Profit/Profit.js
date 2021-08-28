@@ -38,7 +38,7 @@ const Profit = ({ token }) => {
       </Header>
       <Price title="PVU">
         <Img src="le.svg" />
-        <Value>{le}</Value>
+        <Value>{le} =</Value>
       </Price>
       <Price title="PVU">
         <Img src="pvu.svg" />
