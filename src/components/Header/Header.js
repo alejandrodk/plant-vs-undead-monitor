@@ -25,8 +25,8 @@ const HeaderComp = (props) => {
       <FarmSignal active={farmActive}>
         {token
           ? farmActive
-            ? "Puedes farmear!!"
-            : "No puedes farmear"
+            ? "Puedes farmear 😎🌿"
+            : "No puedes farmear 😥"
           : "Agrega un token válido"}
       </FarmSignal>
     </Header>

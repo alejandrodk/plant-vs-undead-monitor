@@ -22,7 +22,7 @@ export const Title = styled.h1`
   text-align: left;
   width: 15%;
   font-family: Luckiest Guy;
-  color: purple;
+  color: #161d29;
 `;
 
 export const TokenLabel = styled.label`
@@ -35,6 +35,7 @@ export const TokenLabel = styled.label`
   background-color: #aafa5f;
   border-radius: 20px;
   font-weight: bold;
+  color: #161d29;
 `;
 
 export const TokenInput = styled.input`
@@ -45,6 +46,7 @@ export const TokenInput = styled.input`
   margin-left: 15px;
   z-index: 2;
   background-color: rgba(255, 255, 255, 0.8);
+  color: #161d29;
 `;
 
 export const FarmSignal = styled.div`
@@ -52,7 +54,7 @@ export const FarmSignal = styled.div`
     const bg = props.active ? "#aafa5f" : "#fa6e5f";
     const bg2 = props.active ? "#90d450" : "#bf5449";
     const bg3 = props.active ? "#b8fa7a" : "#fc8d81";
-    const color = props.active ? "black" : "white";
+    const color = props.active ? "#161d29" : "white";
 
     return `
       background: ${bg};

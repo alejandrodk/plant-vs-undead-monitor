@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const DataBar = styled.div`
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+`;
+
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -61,6 +68,6 @@ export const UTCTime = styled.span`
   box-shadow: 0 8px 0 rgb(0 0 0 / 20%), inset 0 -5px 0 #90d450,
     inset 0 5px 0 #b8fa7a;
   border-radius: 36px;
-  color: black;
+  color: #161d29;
   font-family: Luckiest Guy;
 `;

@@ -1,16 +1,18 @@
 import styled from "styled-components";
 
 export const Plant = styled.div`
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2), inset 0 -5px 0 gray,
-    inset 0 5px 0 white;
-  width: 300px;
+  background-color: #161d29;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2), inset 0 -5px 0 #2b4063,
+    inset 0 5px 0 #2b4063;
+  width: 280px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   border-radius: 15px;
   padding-top: 100px;
   position: relative;
+  margin-right: 15px;
+  margin-bottom: 15px;
 `;
 
 export const PlantImageContainer = styled.div`
@@ -52,11 +54,15 @@ export const PlantDataWrapper = styled.div`
 
 export const PlantDataTitle = styled.h3`
   font-size: 15px;
+  color: white;
+  font-weight: bold;
 `;
 
 export const PlantDataValue = styled.p`
   font-size: 15px;
   margin-left: 10px;
+  color: white;
+  font-weight: 100;
 `;
 
 export const ActiveItemsWrapper = styled.div`

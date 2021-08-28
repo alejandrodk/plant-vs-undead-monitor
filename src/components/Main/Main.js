@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Controller from "../../api";
 import {
+  DataBar,
   Container,
   InactiveFarm,
   Tree,
@@ -10,6 +11,8 @@ import {
 } from "./MainStyles";
 
 import Header from "../Header/Header";
+import StatsHeader from "../StatsHeader/StatsHeader";
+import MyTools from "../MyTools/MyTools";
 import PlantsContainer from "../PlantsContainer/PlantsContainer";
 import { getTime12HVerbose } from "../../helpers/time.helper";
 import { format } from "date-fns";
@@ -59,6 +62,10 @@ function App() {
   return (
     <React.Fragment>
       <Header setToken={setToken} farmActive={farmActive} token={token} />
+      <DataBar>
+        <MyTools token={token} />
+        <StatsHeader token={token} />
+      </DataBar>
       <Container>
         {farmActive ? (
           <PlantsContainer token={token} />
