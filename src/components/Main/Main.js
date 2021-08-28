@@ -26,7 +26,7 @@ function App() {
   const [utcTime, setUtcTime] = useState(getTime12HVerbose(new Date()));
 
   useEffect(() => {
-    const timer = setInterval(async () => await refreshData(), 60 * 1000 * 30);
+    const timer = setInterval(async () => await refreshData(), 60 * 1000 * 15);
     if (token && token.length > 200 && !farmActive) {
       (async function () {
         await refreshData();
