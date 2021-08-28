@@ -1,20 +1,59 @@
-// FARM_STATUS = 'https://backend-farm.plantvsundead.com/farm-status',
-// LAND = 'https://backend-farm.plantvsundead.com/land/-5/-8',
-// LAND_DETAIL = "https://backend-farm.plantvsundead.com/farms/other/{{owner_id}}?limit=10&offset=0",
-// MY_LAND = "https://backend-farm.plantvsundead.com/farms?limit=10&offset=0",
-// PLANT_DETAIL = "https://backend-farm.plantvsundead.com/farms/{{plant_id}}",
-// FARMING_STATS = "https://backend-farm.plantvsundead.com/farming-stats"
-
 // mocks
+import availableTools from "./mocks/availableTools";
+import dailyQuest from "./mocks/dailyQuest";
+import farmingStats from "./mocks/farmingStats";
 import farmStatus from "./mocks/farmStatus";
+import land from "./mocks/land";
 import myLand from "./mocks/myLand";
+import myTools from "./mocks/myTools";
 import plantDetail from "./mocks/plantDetail";
+import pvuPrice from "./mocks/pvuPrice";
+import weather from "./mocks/weather";
 
 export default class Controller {
   token;
-  test = false;
+  test = true;
   constructor(token) {
     this.token = token;
+  }
+
+  async availableTools() {
+    return !this.test
+      ? await // TODO: se debe sacar el stg?
+        (
+          await fetch(
+            "https://backend-farm-stg.plantvsundead.com/available-tools",
+            {
+              headers: this.getHeaders(this.token),
+            }
+          )
+        ).json()
+      : availableTools;
+  }
+
+  async dailyQuest() {
+    return !this.test
+      ? await // TODO: se debe sacar el stg?
+        (
+          await fetch(
+            "https://backend-farm-stg.plantvsundead.com/daily-quest",
+            {
+              headers: this.getHeaders(this.token),
+            }
+          )
+        ).json()
+      : dailyQuest;
+  }
+
+  async farmingStats() {
+    return !this.test
+      ? await // TODO: se debe sacar el stg?
+        (
+          await fetch("https://backend-farm.plantvsundead.com/farming-stats", {
+            headers: this.getHeaders(this.token),
+          })
+        ).json()
+      : farmingStats;
   }
 
   async farmStatus() {
@@ -28,14 +67,16 @@ export default class Controller {
   }
 
   async Land(latitud, longitud) {
-    return await (
-      await fetch(
-        `https://backend-farm.plantvsundead.com/land/${latitud}/${longitud}`,
-        {
-          headers: this.getHeaders(this.token),
-        }
-      )
-    ).json();
+    return !this.test
+      ? await (
+          await fetch(
+            `https://backend-farm.plantvsundead.com/land/${latitud}/${longitud}`,
+            {
+              headers: this.getHeaders(this.token),
+            }
+          )
+        ).json()
+      : land;
   }
 
   async LandDetail(owner, limit = "10", offset = "0") {
@@ -49,7 +90,7 @@ export default class Controller {
     ).json();
   }
 
-  async getMyLand() {
+  async myLand() {
     return !this.test
       ? await (
           await fetch(
@@ -62,7 +103,17 @@ export default class Controller {
       : myLand;
   }
 
-  async getPlantDetail(plantId) {
+  async myTools() {
+    return !this.test
+      ? await (
+          await fetch("https://backend-farm-stg.plantvsundead.com/my-tools", {
+            headers: this.getHeaders(this.token),
+          })
+        ).json()
+      : myTools;
+  }
+
+  async plantDetail(plantId) {
     return !this.test
       ? await (
           await fetch(
@@ -75,12 +126,27 @@ export default class Controller {
       : plantDetail;
   }
 
-  async getFarmingStats() {
-    return await (
-      await fetch("https://backend-farm.plantvsundead.com/farming-stats", {
-        headers: this.getHeaders(this.token),
-      })
-    ).json();
+  async pvuPrice() {
+    return !this.test
+      ? await (
+          await fetch("https://pvu-bot-info.plantvsundead.com/price", {
+            headers: this.getHeaders(this.token),
+          })
+        ).json()
+      : pvuPrice;
+  }
+
+  async weather() {
+    return !this.test
+      ? await (
+          await fetch(
+            "https://backend-farm-stg.plantvsundead.com/weather-today",
+            {
+              headers: this.getHeaders(this.token),
+            }
+          )
+        ).json()
+      : weather;
   }
 
   getHeaders() {

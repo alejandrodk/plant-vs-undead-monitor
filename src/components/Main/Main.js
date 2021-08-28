@@ -72,7 +72,7 @@ function App() {
           <UpdatedTime>{`actualizado: ${format(
             lastUpdated,
             "h:mm aaa"
-          )} | ${getTime12HVerbose(new Date())} UTC`}</UpdatedTime>
+          )} | ${getTime12HVerbose(new Date(lastUpdated))} UTC`}</UpdatedTime>
         </UpdatedTimeWrapper>
         <UTCTime>{"Hora UTC " + utcTime}</UTCTime>
       </Container>

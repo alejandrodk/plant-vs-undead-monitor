@@ -12,7 +12,7 @@ function PlantsContainerComp(props) {
     if (!plants) {
       (async function () {
         const controller = new Controller(token);
-        const { data } = await controller.getMyLand();
+        const { data } = await controller.myLand();
 
         setPlants(data);
       })();
