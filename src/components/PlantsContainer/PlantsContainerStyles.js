@@ -6,7 +6,6 @@ export const PlantsContainer = styled.div`
   flex-wrap: wrap;
   justify-content: left;
   margin-top: 15px;
-  padding-top: 15px;
   z-index: 5;
 `;
 

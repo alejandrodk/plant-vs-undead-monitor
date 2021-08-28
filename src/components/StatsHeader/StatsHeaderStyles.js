@@ -7,7 +7,7 @@ export const Header = styled.div`
   flex-direction: row;
   justify-content: space-between;
   background-color: #161d29;
-  padding: 20px;
+  padding: 10px;
   z-index: 3;
   margin: 15px;
   border-radius: 15px;

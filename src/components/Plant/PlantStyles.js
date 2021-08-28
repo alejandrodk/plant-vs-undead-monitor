@@ -4,7 +4,7 @@ export const Plant = styled.div`
   background-color: #161d29;
   box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2), inset 0 -5px 0 #2b4063,
     inset 0 5px 0 #2b4063;
-  width: 280px;
+  width: 18%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

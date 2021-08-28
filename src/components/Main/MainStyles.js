@@ -8,9 +8,8 @@ export const DataBar = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  padding: 20px;
+  width: 100%;
+  padding: 10px;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
@@ -40,10 +39,10 @@ export const Tree = styled.img`
 
 export const UpdatedTimeWrapper = styled.div`
   position: fixed;
-  bottom: 5%;
+  bottom: 2%;
   left: 35%;
   width: 500px;
-  height: 100px;
+  height: 65px;
   background-image: url(/bar.svg);
   background-repeat: no-repeat;
   background-size: contain;
@@ -52,6 +51,7 @@ export const UpdatedTimeWrapper = styled.div`
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
+  z-index: 5;
 `;
 
 export const UpdatedTime = styled.h3`
@@ -60,14 +60,16 @@ export const UpdatedTime = styled.h3`
 
 export const UTCTime = styled.span`
   position: fixed;
-  bottom: 10%;
+  bottom: 2%;
   right: 5%;
-  padding: 20px;
+  padding: 15px;
   background: #aafa5f;
   border: 4px solid #333;
   box-shadow: 0 8px 0 rgb(0 0 0 / 20%), inset 0 -5px 0 #90d450,
     inset 0 5px 0 #b8fa7a;
-  border-radius: 36px;
+  border-radius: 15px;
   color: #161d29;
   font-family: Luckiest Guy;
+  z-index: 5;
+  margin: auto;
 `;

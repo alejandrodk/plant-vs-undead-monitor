@@ -11,9 +11,10 @@ import {
 } from "./MainStyles";
 
 import Header from "../Header/Header";
+import MyTools from "../MyTools/MyTools";
 import StatsHeader from "../StatsHeader/StatsHeader";
 import PriceConvert from "../PriceConvert/PriceConvert";
-import MyTools from "../MyTools/MyTools";
+import Profit from "../Profit/Profit";
 import PlantsContainer from "../PlantsContainer/PlantsContainer";
 import { getTime12HVerbose } from "../../helpers/time.helper";
 import { format } from "date-fns";
@@ -33,7 +34,7 @@ function App() {
     }
 
     return () => clearInterval(timer);
-  }, [token]);
+  }, [token, farmActive]);
 
   useEffect(() => {
     const time = setInterval(() => {
@@ -71,13 +72,18 @@ function App() {
           </React.Fragment>
         )}
         <PriceConvert token={token} />
+        {farmActive && <Profit token={token} />}
       </DataBar>
       <Container>
         {farmActive ? (
           <PlantsContainer token={token} />
         ) : (
           <InactiveFarm>
-            <h1>Tu granja se encuentra inactiva para operar 😥</h1>
+            <h1>No puedes farmear en este momento ❌</h1>
+            <p>
+              no debes recargar la página, se actualiza automáticamente cada 15
+              minutos. ⏰
+            </p>
           </InactiveFarm>
         )}
         <Tree src="/tree.png" />
@@ -87,7 +93,7 @@ function App() {
             "h:mm aaa"
           )} | ${getTime12HVerbose(new Date(lastUpdated))} UTC`}</UpdatedTime>
         </UpdatedTimeWrapper>
-        <UTCTime>{"Hora UTC " + utcTime}</UTCTime>
+        <UTCTime>{"🕕 Hora UTC " + utcTime}</UTCTime>
       </Container>
     </React.Fragment>
   );

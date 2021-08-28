@@ -1,21 +1,23 @@
 import styled from "styled-components";
 
 export const Header = styled.div`
-position: relative;
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  height: 80px;
+  height: 60px;
   justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
   background-color: #90d450;
-  padding: 20px;
+  padding: 10px;
   z-index: 3;
 `;
 
 export const Logo = styled.img`
   width: 100px;
   height: auto;
-  margin: auto;
+  margin: 0px auto;
 `;
 
 export const Title = styled.h1`
@@ -27,7 +29,7 @@ export const Title = styled.h1`
 
 export const TokenLabel = styled.label`
   width: 50%;
-  height: 100%;
+  height: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,11 +70,11 @@ export const FarmSignal = styled.div`
 
   width: 20%;
   height: 30%;
-  padding: 15px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin: 0px auto;
   font-family: Luckiest Guy;
   font-size: 20px;
 `;
