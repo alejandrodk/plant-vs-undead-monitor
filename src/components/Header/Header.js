@@ -4,6 +4,7 @@ import {
   Logo,
   Title,
   TokenInput,
+  TokenWrapper,
   TokenLabel,
 } from "./HeaderStyles";
 
@@ -14,14 +15,14 @@ const HeaderComp = (props) => {
     <Header>
       <Logo src="/Logo.png" />
       <Title>PVU Monitor</Title>
-      <TokenLabel>
-        Agrega tu token de acceso
+      <TokenWrapper>
+        <TokenLabel>Agrega tu token de acceso</TokenLabel>
         <TokenInput
           type="text"
           value={token || ""}
           onChange={({ target }) => setToken(target.value)}
         />
-      </TokenLabel>
+      </TokenWrapper>
       <FarmSignal active={farmActive}>
         {token
           ? farmActive

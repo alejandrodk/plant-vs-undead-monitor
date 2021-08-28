@@ -77,13 +77,17 @@ function App() {
       <Container>
         {farmActive ? (
           <PlantsContainer token={token} />
-        ) : (
+        ) : token ? (
           <InactiveFarm>
             <h1>No puedes farmear en este momento ❌</h1>
             <p>
               no debes recargar la página, se actualiza automáticamente cada 15
               minutos. ⏰
             </p>
+          </InactiveFarm>
+        ) : (
+          <InactiveFarm>
+            <h1>Agrega un token válido</h1>
           </InactiveFarm>
         )}
         <Tree src="/tree.png" />

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../helpers/screens";
 
 export const Container = styled.div`
   width: 100px;
@@ -16,8 +17,19 @@ export const Container = styled.div`
     inset 0 5px 0 #78acff;
   border-radius: 15px;
   color: white;
+
+  @media (${devices.mobileL}) {
+    height: 20px;
+    width: 30%;
+    padding: 5px;
+    font-size: 15px;
+  }
 `;
 
 export const Logo = styled.img`
   width: 40%;
+
+  @media (${devices.mobileL}) {
+    width: 25px;
+  }
 `;

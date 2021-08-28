@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../helpers/screens";
 
 export const Header = styled.div`
   position: relative;
@@ -12,8 +13,15 @@ export const Header = styled.div`
   margin: 15px;
   border-radius: 15px;
   box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2);
+
+  @media (${devices.mobileL}) {
+    margin: 0px;
+    width: 45%;
+    margin: 5px;
+  }
 `;
 
 export const Space = styled.span`
   width: 15px;
+  display: none;
 `

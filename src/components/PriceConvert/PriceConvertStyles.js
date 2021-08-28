@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../helpers/screens";
 
 export const Container = styled.div`
   position: relative;
@@ -17,6 +18,12 @@ export const Container = styled.div`
   border-radius: 15px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: white;
+
+  @media (${devices.mobileL}) {
+    padding: 10px;
+    margin: 5px;
+    width: 100%;
+  }
 `;
 
 export const Price = styled.div`
@@ -37,4 +44,8 @@ export const Img = styled.img`
 export const Value = styled.span`
   font-family: Luckiest Guy;
   font-size: 25px;
+
+  @media (${devices.mobileL}) {
+    font-size: 15px;
+  }
 `;

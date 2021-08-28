@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../helpers/screens";
 
 export const Header = styled.div`
   position: relative;
@@ -12,12 +13,20 @@ export const Header = styled.div`
   background-color: #90d450;
   padding: 10px;
   z-index: 3;
+
+  @media (${devices.mobileL}) {
+    height: auto;
+  }
 `;
 
 export const Logo = styled.img`
   width: 100px;
   height: auto;
   margin: 0px auto;
+
+  @media (${devices.mobileL}) {
+    width: 75px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -25,9 +34,16 @@ export const Title = styled.h1`
   width: 15%;
   font-family: Luckiest Guy;
   color: #161d29;
+
+  @media (${devices.mobileL}) {
+    width: 70%;
+    text-align: center;
+    font-size: 25px;
+    margin-right: 5%;
+  }
 `;
 
-export const TokenLabel = styled.label`
+export const TokenWrapper = styled.div`
   width: 50%;
   height: 70%;
   display: flex;
@@ -38,6 +54,26 @@ export const TokenLabel = styled.label`
   border-radius: 20px;
   font-weight: bold;
   color: #161d29;
+
+  @media (${devices.mobileL}) {
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 5px;
+    border-radius: 10px;
+  }
+`;
+
+export const TokenLabel = styled.span`
+  @media (${devices.mobileL}) {
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
 `;
 
 export const TokenInput = styled.input`
@@ -49,6 +85,11 @@ export const TokenInput = styled.input`
   z-index: 2;
   background-color: rgba(255, 255, 255, 0.8);
   color: #161d29;
+
+  @media (${devices.mobileL}) {
+    width: 90%;
+    margin: auto;
+  }
 `;
 
 export const FarmSignal = styled.div`
@@ -77,4 +118,12 @@ export const FarmSignal = styled.div`
   margin: 0px auto;
   font-family: Luckiest Guy;
   font-size: 20px;
+
+  @media (${devices.mobileL}) {
+    width: 70%;
+    font-size: 15px;
+    padding: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
 `;

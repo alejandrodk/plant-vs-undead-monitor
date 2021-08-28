@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../helpers/screens";
 
 export const PlantsContainer = styled.div`
   width: 100%;
@@ -7,6 +8,11 @@ export const PlantsContainer = styled.div`
   justify-content: left;
   margin-top: 15px;
   z-index: 5;
+
+  @media (${devices.mobileL}) {
+    justify-content: center;
+    padding: 5px;
+  }
 `;
 
 export const PlantsContainerTitle = styled.h3`
@@ -21,4 +27,12 @@ export const PlantsContainerTitle = styled.h3`
   margin: 0px;
   color: white;
   font-family: Luckiest Guy;
+
+  @media (${devices.mobileL}) {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin: 0px;
+    font-size: 18px;
+  }
 `;

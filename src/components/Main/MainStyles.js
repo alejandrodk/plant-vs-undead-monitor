@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../helpers/screens";
 
 export const DataBar = styled.div`
   width: 100vw;
@@ -16,6 +17,12 @@ export const Container = styled.div`
   position: relative;
   overflow: hidden;
   z-index: 2;
+
+  @media (${devices.mobileL}) {
+    overflow-x: auto;
+    padding: 5px;
+    width: 98%;
+  }
 `;
 
 export const InactiveFarm = styled.div`
@@ -52,10 +59,19 @@ export const UpdatedTimeWrapper = styled.div`
   align-content: center;
   justify-content: center;
   z-index: 5;
+
+  @media (${devices.mobileL}) {
+    left: 0%;
+    width: 100%;
+  }
 `;
 
 export const UpdatedTime = styled.h3`
   color: white;
+
+  @media (${devices.mobileL}) {
+    font-size: 13px;
+  }
 `;
 
 export const UTCTime = styled.span`
@@ -72,4 +88,8 @@ export const UTCTime = styled.span`
   font-family: Luckiest Guy;
   z-index: 5;
   margin: auto;
+
+  @media (${devices.mobileL}) {
+    display: none;
+  }
 `;

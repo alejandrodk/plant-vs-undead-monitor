@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../helpers/screens";
 
 export const Plant = styled.div`
   ${({water}) => {
@@ -16,6 +17,11 @@ export const Plant = styled.div`
   position: relative;
   margin-right: 15px;
   margin-bottom: 15px;
+
+  @media (${devices.mobileL}) {
+    width: 100%;
+    margin: auto;
+  }
 `;
 
 export const PlantImageContainer = styled.div`

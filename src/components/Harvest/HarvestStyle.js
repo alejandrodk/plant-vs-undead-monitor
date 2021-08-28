@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../helpers/screens";
 
 export const Container = styled.div`
   height: 25px;
@@ -15,4 +16,8 @@ export const Container = styled.div`
     inset 0 5px 0 #90eb4b;
   border-radius: 15px;
   color: #161d29;
+
+  @media (${devices.mobileL}) {
+    display: none;
+  }
 `;

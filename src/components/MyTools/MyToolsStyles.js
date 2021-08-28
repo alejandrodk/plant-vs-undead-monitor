@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../helpers/screens";
 
 export const Container = styled.div`
   position: relative;
@@ -14,6 +15,14 @@ export const Container = styled.div`
   z-index: 3;
   margin: 15px;
   border-radius: 15px;
+
+  @media (${devices.mobileL}) {
+    width: 40%;
+    justify-content: space-between;
+    margin-bottom: 0px;
+    margin: 5px;
+    padding: 5px;
+  }
 `;
 
 export const Tool = styled.div`
@@ -24,10 +33,19 @@ export const Tool = styled.div`
   align-items: center;
   padding-left: 10px;
   padding-right: 10px;
+
+  @media (${devices.mobileL}) {
+    padding: 0px;
+    margin: auto;
+  }
 `;
 
 export const ToolImg = styled.img`
   width: 50px;
+
+  @media (${devices.mobileL}) {
+    width: 35px;
+  }
 `;
 
 export const Quantity = styled.div`
@@ -39,8 +57,18 @@ export const Quantity = styled.div`
   color: white;
   padding: 5px;
   border-radius: 10px;
+
+  @media (${devices.mobileL}) {
+    position: relative;
+    right: 0;
+    top: 0;
+  }
 `;
 
 export const Space = styled.span`
   width: 15px;
-`
+
+  @media (${devices.mobileL}) {
+    display: none;
+  }
+`;
