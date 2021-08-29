@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { AppContext } from "../../data/AppContext";
 import Controller from "../../api";
 import Plant from "../Plant/Plant";
 
 import { PlantsContainer, PlantsContainerTitle } from "./PlantsContainerStyles";
 
-function PlantsContainerComp(props) {
+function PlantsContainerComp() {
+  const { token } = useContext(AppContext);
   const [plants, setPlants] = useState(null);
-  const { token } = props;
 
   useEffect(() => {
     if (!plants) {

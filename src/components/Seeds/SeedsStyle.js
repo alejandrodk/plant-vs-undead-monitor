@@ -10,7 +10,7 @@ export const Container = styled.div`
   align-items: center;
   font-family: Luckiest Guy;
   font-size: 20px;
-
+  margin-right: 10px;
   background: #507fcc;
   border: 4px solid #333;
   box-shadow: 0 8px 0 rgb(0 0 0 / 20%), inset 0 -5px 0 #436aab,
@@ -23,6 +23,7 @@ export const Container = styled.div`
     width: 30%;
     padding: 5px;
     font-size: 15px;
+    margin-right: 0px;
   }
 `;
 

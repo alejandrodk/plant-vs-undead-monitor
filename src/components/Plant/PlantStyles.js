@@ -42,6 +42,13 @@ export const LandSVG = styled.img`
   width: 200px;
 `;
 
+export const CrowSVG = styled.img`
+  width: 50px;
+  position: absolute;
+  top: -30px;
+  left: 10px;
+`;
+
 export const PlantDataContainer = styled.div`
   width: 100%;
   padding: 20px;

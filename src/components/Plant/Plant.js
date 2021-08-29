@@ -9,6 +9,7 @@ import {
   PlantDataWrapper,
   PlantImageContainer,
   PlantSVG,
+  CrowSVG,
   ActiveItemsWrapper,
   PlantActiveItem,
   PlantActiveItemQuantity,
@@ -19,6 +20,7 @@ function PlantComp(props) {
   return (
     <Plant water={plant.needWater}>
       <PlantImageContainer>
+        {plant.hasCrow && <CrowSVG src="/crow.png" />}
         <PlantSVG src={plant?.plant?.iconUrl} />
         <LandSVG
           src={plant?.needWater ? "/land_3d_need_water.svg" : "/land_3d.svg"}
@@ -32,6 +34,10 @@ function PlantComp(props) {
         <PlantDataWrapper>
           <PlantDataTitle>necesita agua?: </PlantDataTitle>
           <PlantDataValue>{plant?.needWater ? "si" : "no"}</PlantDataValue>
+        </PlantDataWrapper>
+        <PlantDataWrapper>
+          <PlantDataTitle>espantar cuervo?: </PlantDataTitle>
+          <PlantDataValue>{plant?.hasCrow ? "si" : "no"}</PlantDataValue>
         </PlantDataWrapper>
       </PlantDataContainer>
       <ActiveItemsWrapper>

@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AppContext } from "../../data/AppContext";
 
 import Controller from "../../api";
 import { Container, Tool, ToolImg, Quantity, Space } from "./MyToolsStyles";
 
-const HeaderComp = ({ token }) => {
+const HeaderComp = () => {
+  const { token } = useContext(AppContext);
   const [tools, setTools] = useState(null);
 
   useEffect(() => {
-    if (!tools) {
+    if (!tools && token) {
       (async function () {
         const controller = new Controller(token);
         const { data } = await controller.myTools();

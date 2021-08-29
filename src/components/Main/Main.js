@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AppContext } from "../../data/AppContext";
 import Controller from "../../api";
 import {
   DataBar,
@@ -20,14 +21,15 @@ import { getTime12HVerbose } from "../../helpers/time.helper";
 import { format } from "date-fns";
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem("appToken"));
+  const { token } = useContext(AppContext);
   const [farmActive, setFarmActive] = useState(false);
   const [lastUpdated, setLastUpdated] = useState(new Date());
   const [utcTime, setUtcTime] = useState(getTime12HVerbose(new Date()));
 
   useEffect(() => {
     const timer = setInterval(async () => await refreshData(), 60 * 1000 * 15);
-    if (token && token.length > 200 && !farmActive) {
+
+    if (token && !farmActive) {
       (async function () {
         await refreshData();
       })();
@@ -48,10 +50,6 @@ function App() {
     const controller = new Controller(token);
     const res = await controller.farmStatus();
 
-    if (res.status == 1) alert("Token invalido");
-
-    localStorage.setItem("appToken", token);
-
     const { status } = res.data;
 
     if (status == 1) setFarmActive(true);
@@ -63,20 +61,20 @@ function App() {
 
   return (
     <React.Fragment>
-      <Header setToken={setToken} farmActive={farmActive} token={token} />
+      <Header farmActive={farmActive} />
       <DataBar>
         {farmActive && (
           <React.Fragment>
-            <MyTools token={token} />
-            <StatsHeader token={token} />
+            <MyTools />
+            <StatsHeader />
           </React.Fragment>
         )}
-        <PriceConvert token={token} />
-        {farmActive && <Profit token={token} />}
+        <PriceConvert />
+        {farmActive && <Profit />}
       </DataBar>
       <Container>
         {farmActive ? (
-          <PlantsContainer token={token} />
+          <PlantsContainer />
         ) : token ? (
           <InactiveFarm>
             <h1>No puedes farmear en este momento ❌</h1>

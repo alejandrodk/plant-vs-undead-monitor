@@ -74,6 +74,7 @@ export default {
       hasSynergy: false,
       needWater: true,
       hasSeed: false,
+      hasCrow: true,
       inGreenhouse: false,
       count: 24,
       totalHarvest: 0,

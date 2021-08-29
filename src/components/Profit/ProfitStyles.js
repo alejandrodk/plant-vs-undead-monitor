@@ -40,18 +40,6 @@ export const Header = styled.div`
   }
 `;
 
-export const Text = styled.span`
-  font-size: 20px;
-  cursor: pointer;
-  background: #96e046;
-  color: #161d29;
-  padding: 5px;
-  border-radius: 10px;
-  margin: auto;
-  margin-left: 10px;
-  font-family: Luckiest Guy;
-`;
-
 export const Price = styled.div`
   position: relative;
   background: #161d29;
