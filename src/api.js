@@ -24,7 +24,7 @@ export default class Controller {
           await fetch(
             "https://backend-farm-stg.plantvsundead.com/available-tools",
             {
-              headers: this.getHeaders(this.token),
+              headers: this.getHeaders(),
             }
           )
         ).json()
@@ -38,7 +38,7 @@ export default class Controller {
           await fetch(
             "https://backend-farm-stg.plantvsundead.com/daily-quest",
             {
-              headers: this.getHeaders(this.token),
+              headers: this.getHeaders(),
             }
           )
         ).json()
@@ -50,7 +50,7 @@ export default class Controller {
       ? await // TODO: se debe sacar el stg?
         (
           await fetch("https://backend-farm.plantvsundead.com/farming-stats", {
-            headers: this.getHeaders(this.token),
+            headers: this.getHeaders(),
           })
         ).json()
       : farmingStats;
@@ -60,7 +60,7 @@ export default class Controller {
     return !this.test
       ? await (
           await fetch("https://backend-farm.plantvsundead.com/farm-status", {
-            headers: this.getHeaders(this.token),
+            headers: this.getHeaders(),
           })
         ).json()
       : farmStatus;
@@ -72,7 +72,7 @@ export default class Controller {
           await fetch(
             `https://backend-farm.plantvsundead.com/land/${latitud}/${longitud}`,
             {
-              headers: this.getHeaders(this.token),
+              headers: this.getHeaders(),
             }
           )
         ).json()
@@ -84,7 +84,7 @@ export default class Controller {
       await fetch(
         `https://backend-farm.plantvsundead.com/farms/other/${owner}?limit=${limit}&offset=${offset}`,
         {
-          headers: this.getHeaders(this.token),
+          headers: this.getHeaders(),
         }
       )
     ).json();
@@ -96,7 +96,7 @@ export default class Controller {
           await fetch(
             "https://backend-farm.plantvsundead.com/farms?limit=10&offset=0",
             {
-              headers: this.getHeaders(this.token),
+              headers: this.getHeaders(),
             }
           )
         ).json()
@@ -107,7 +107,7 @@ export default class Controller {
     return !this.test
       ? await (
           await fetch("https://backend-farm-stg.plantvsundead.com/my-tools", {
-            headers: this.getHeaders(this.token),
+            headers: this.getHeaders(),
           })
         ).json()
       : myTools;
@@ -119,7 +119,7 @@ export default class Controller {
           await fetch(
             "https://backend-farm.plantvsundead.com/farms/" + plantId,
             {
-              headers: this.getHeaders(this.token),
+              headers: this.getHeaders(),
             }
           )
         ).json()
@@ -130,7 +130,7 @@ export default class Controller {
     return !this.test
       ? await (
           await fetch("https://pvu-bot-info.plantvsundead.com/price", {
-            headers: this.getHeaders(this.token),
+            headers: this.getHeaders(),
           })
         ).json()
       : pvuPrice;
@@ -142,7 +142,7 @@ export default class Controller {
           await fetch(
             "https://backend-farm-stg.plantvsundead.com/weather-today",
             {
-              headers: this.getHeaders(this.token),
+              headers: this.getHeaders(),
             }
           )
         ).json()
