@@ -21,10 +21,19 @@ export const Header = styled.div`
 export const Logo = styled.img`
   width: 100px;
   height: auto;
+  margin: 0px;
+
+  @media (max-width: 425px) {
+    display: none;
+  }
+`;
+
+export const MonitorLogo = styled.img`
+  width: 150px;
   margin: 0px auto;
 
   @media (max-width: 425px) {
-    width: 75px;
+    width: 50%;
   }
 `;
 

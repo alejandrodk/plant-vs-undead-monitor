@@ -5,6 +5,7 @@ import {
   FarmSignal,
   Header,
   Logo,
+  MonitorLogo,
   Title,
   TokenInput,
   TokenWrapper,
@@ -27,7 +28,7 @@ const HeaderComp = (props) => {
   return (
     <Header>
       <Logo src="/Logo.png" />
-      <Title>PVU Monitor</Title>
+      <MonitorLogo src="/pvu-monitor-logo.png"/>
       <TokenWrapper>
         <TokenLabel>Agrega tu token de acceso</TokenLabel>
         <TokenInput

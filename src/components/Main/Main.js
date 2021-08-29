@@ -5,6 +5,7 @@ import {
   DataBar,
   Container,
   InactiveFarm,
+  Logo,
   Tree,
   UpdatedTimeWrapper,
   UpdatedTime,
@@ -79,6 +80,7 @@ function App() {
           <PlantsContainer />
         ) : token ? (
           <InactiveFarm>
+            <Logo src="pvu-monitor-logo-2.png" />
             <h1>No puedes farmear en este momento ❌</h1>
             <p>
               no debes recargar la página, se actualiza automáticamente cada 15

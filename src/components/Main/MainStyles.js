@@ -39,6 +39,14 @@ export const InactiveFarm = styled.div`
   }
 `;
 
+export const Logo = styled.img`
+  width: 50%;
+
+  @media (max-width: 425px) {
+    width: 100%;
+  }
+`;
+
 export const Tree = styled.img`
   position: absolute;
   bottom: 0;
