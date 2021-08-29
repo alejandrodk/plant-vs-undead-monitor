@@ -8,10 +8,12 @@ export const PlantsContainer = styled.div`
   justify-content: left;
   margin-top: 15px;
   z-index: 5;
+  margin-bottom: 5%;
 
   @media (${devices.mobileL}) {
     justify-content: center;
     padding: 5px;
+    margin-bottom: 20%;
   }
 `;
 

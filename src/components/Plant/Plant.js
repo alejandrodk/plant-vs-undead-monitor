@@ -1,4 +1,12 @@
-import { getDateWithLocalOffset, verboseDate } from "../../helpers";
+import { isAfter } from "date-fns";
+import React, { useContext } from "react";
+import { AppContext } from "../../data/AppContext";
+import {
+  addHoursToDate,
+  getDateWithLocalOffset,
+  hoursDiff,
+  verboseDate,
+} from "../../helpers";
 
 import {
   LandSVG,
@@ -13,10 +21,29 @@ import {
   ActiveItemsWrapper,
   PlantActiveItem,
   PlantActiveItemQuantity,
+  Profit,
+  ProfitIcon,
+  ProfitWrapper,
 } from "./PlantStyles";
 
 function PlantComp(props) {
   const { plant } = props;
+  const { pvuUSD } = useContext(AppContext);
+
+  function calculateTime(plant) {
+    if (!plant) return 0;
+
+    const current = getDateWithLocalOffset(new Date());
+    const end = addHoursToDate(
+      new Date(plant.startTime),
+      plant.plant.farmConfig.hours
+    );
+
+    if (isAfter(current, end)) return "LISTO!";
+
+    return hoursDiff(current, end);
+  }
+
   return (
     <Plant water={plant.needWater}>
       <PlantImageContainer>
@@ -53,6 +80,15 @@ function PlantComp(props) {
           </PlantActiveItem>
         ))}
       </ActiveItemsWrapper>
+      <ProfitWrapper>
+        <ProfitIcon src="/le.svg" />
+        <Profit>{plant?.rate.le || 0}</Profit>
+        <ProfitIcon src="/dollar.svg" style={{ width: "12px" }} />
+        <Profit>
+          {(plant && ((plant.rate.le / 100) * pvuUSD).toFixed(2)) || 0}
+        </Profit>
+        <Profit>🕕 {calculateTime(plant)}</Profit>
+      </ProfitWrapper>
     </Plant>
   );
 }

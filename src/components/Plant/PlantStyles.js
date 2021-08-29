@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { devices } from "../../helpers/screens";
 
 export const Plant = styled.div`
-  ${({water}) => {
+  ${({ water }) => {
     return water ? `border: solid 3px red;` : "";
   }}
   background-color: #161d29;
@@ -66,12 +66,15 @@ export const PlantDataWrapper = styled.div`
   align-items: center;
   align-content: center;
   height: 25%;
+  margin-bottom: 5px;
 `;
 
 export const PlantDataTitle = styled.h3`
   font-size: 15px;
   color: white;
   font-weight: bold;
+  margin: 0px;
+  margin-right: 10px;
 `;
 
 export const PlantDataValue = styled.p`
@@ -79,6 +82,7 @@ export const PlantDataValue = styled.p`
   margin-left: 10px;
   color: white;
   font-weight: 100;
+  margin: 0px;
 `;
 
 export const ActiveItemsWrapper = styled.div`
@@ -118,4 +122,28 @@ export const PlantActiveItemQuantity = styled.span`
   color: white;
   font-size: 10px;
   font-weight: bold;
+`;
+
+export const ProfitWrapper = styled.div`
+  width: 100%;
+  padding: 15px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  align-content: center;
+`;
+
+export const Profit = styled.span`
+  font-family: Luckiest Guy;
+  color: white;
+  font-size: 18px;
+  margin-right: 10px;
+`;
+
+export const ProfitIcon = styled.img`
+  width: 20px;
+  margin-right: 10px;
 `;

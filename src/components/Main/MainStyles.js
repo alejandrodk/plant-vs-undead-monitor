@@ -33,6 +33,10 @@ export const InactiveFarm = styled.div`
   color: white;
   margin: 50px auto;
   text-align: center;
+
+  @media (${devices.mobileL}) {
+    font-size: 15px;
+  }
 `;
 
 export const Tree = styled.img`
@@ -42,6 +46,10 @@ export const Tree = styled.img`
   left: -100px;
   opacity: 1;
   position: fixed;
+
+  @media (${devices.mobileL}) {
+    display: none;
+  }
 `;
 
 export const UpdatedTimeWrapper = styled.div`

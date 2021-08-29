@@ -10,6 +10,7 @@ import {
   setMinutes,
   addHours,
   addMinutes,
+  differenceInHours,
 } from "date-fns";
 import { es } from "date-fns/locale";
 
@@ -36,9 +37,9 @@ export function getCurrentMonthAndYear({ verbose = false }) {
 }
 
 export function verboseDate(date) {
-  return format(new Date(date), "dd/MMMM/yyy h:m aaa", {
+  return format(new Date(date), "dd/MM/yyy h:m aaa", {
     locale: es,
-  })
+  });
 }
 
 export function getDayFromDate(date) {
@@ -99,6 +100,10 @@ export function setTimeToDate(date, hours, minutes) {
   return setHours(setMinutes(date, minutes), hours);
 }
 
+export function addHoursToDate(date, hours) {
+  return addHours(date, hours);
+}
+
 export function addMinutesToDate(date, minutes) {
   return addMinutes(date, minutes);
 }
@@ -129,4 +134,8 @@ export function getWeekDayName(day) {
   return format(setDay(getDateWithLocalOffset(new Date()), day), "eeee", {
     locale: es,
   });
+}
+
+export function hoursDiff(date1, date2) {
+  return differenceInHours(date1, date2);
 }
