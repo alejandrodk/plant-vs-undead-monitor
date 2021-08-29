@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { AppContext } from "../../data/AppContext";
-import Controller from "../../api";
+import Controller from "../../api/api";
 import Seeds from "../Seeds/Seeds";
 import Harvest from "../Harvest/Harvest";
 import LEWallet from "../LEWallet/LEWallet";

@@ -1,7 +1,7 @@
 import { useEffect, useContext } from "react";
 import { AppContext } from "../../data/AppContext";
 
-import Controller from "../../api";
+import Controller from "../../api/api";
 import { Container, Price, Img, Value } from "./PriceConvertStyles";
 
 const PriceConvert = () => {

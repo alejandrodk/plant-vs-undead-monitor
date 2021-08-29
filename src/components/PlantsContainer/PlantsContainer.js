@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AppContext } from "../../data/AppContext";
-import Controller from "../../api";
+import Controller from "../../api/api";
 import Plant from "../Plant/Plant";
 
 import { PlantsContainer, PlantsContainerTitle } from "./PlantsContainerStyles";

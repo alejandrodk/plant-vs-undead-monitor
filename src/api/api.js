@@ -1,26 +1,25 @@
 // mocks
-import availableTools from "./mocks/availableTools";
-import dailyQuest from "./mocks/dailyQuest";
-import farmingStats from "./mocks/farmingStats";
-import farmStatus from "./mocks/farmStatus";
-import land from "./mocks/land";
-import myLand from "./mocks/myLand";
-import myTools from "./mocks/myTools";
-import plantDetail from "./mocks/plantDetail";
-import pvuPrice from "./mocks/pvuPrice";
-import weather from "./mocks/weather";
+import availableTools from "../mocks/availableTools";
+import dailyQuest from "../mocks/dailyQuest";
+import farmingStats from "../mocks/farmingStats";
+import farmStatus from "../mocks/farmStatus";
+import land from "../mocks/land";
+import myLand from "../mocks/myLand";
+import myTools from "../mocks/myTools";
+import plantDetail from "../mocks/plantDetail";
+import pvuPrice from "../mocks/pvuPrice";
+import weather from "../mocks/weather";
 
 export default class Controller {
   token;
-  test = false;
+  test = true;
   constructor(token) {
     this.token = token;
   }
 
   async availableTools() {
     return !this.test
-      ? await // TODO: se debe sacar el stg?
-        (
+      ? await (
           await fetch(
             "https://backend-farm-stg.plantvsundead.com/available-tools",
             {
@@ -33,8 +32,7 @@ export default class Controller {
 
   async dailyQuest() {
     return !this.test
-      ? await // TODO: se debe sacar el stg?
-        (
+      ? await (
           await fetch(
             "https://backend-farm-stg.plantvsundead.com/daily-quest",
             {
@@ -47,8 +45,7 @@ export default class Controller {
 
   async farmingStats() {
     return !this.test
-      ? await // TODO: se debe sacar el stg?
-        (
+      ? await (
           await fetch("https://backend-farm.plantvsundead.com/farming-stats", {
             headers: this.getHeaders(),
           })
