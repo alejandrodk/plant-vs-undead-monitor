@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { devices } from "../../helpers/screens";
 
 export const Header = styled.div`
   position: relative;
@@ -90,6 +89,22 @@ export const TokenInput = styled.input`
     width: 90%;
     margin: auto;
   }
+`;
+
+export const QuestionSign = styled.span`
+  margin-left: 10px;
+  background-color: #fa6e5f;
+  border: solid 4px #161d29;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 2.5px 7px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+  z-index: 3;
 `;
 
 export const FarmSignal = styled.div`

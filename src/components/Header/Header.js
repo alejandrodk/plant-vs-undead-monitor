@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { AppContext } from "../../data/AppContext";
 
 import {
@@ -9,11 +9,12 @@ import {
   TokenInput,
   TokenWrapper,
   TokenLabel,
+  QuestionSign,
 } from "./HeaderStyles";
 
 const HeaderComp = (props) => {
   const { token, setToken } = useContext(AppContext);
-  const { farmActive } = props;
+  const { farmActive, setShowTutorial } = props;
 
   useEffect(() => {
     if (!token) {
@@ -36,6 +37,7 @@ const HeaderComp = (props) => {
             target.value.length > 200 && setToken(target.value);
           }}
         />
+        <QuestionSign onClick={() => setShowTutorial(true)}>?</QuestionSign>
       </TokenWrapper>
       <FarmSignal active={farmActive}>
         {token

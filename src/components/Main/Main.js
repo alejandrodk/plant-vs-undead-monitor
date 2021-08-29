@@ -10,7 +10,7 @@ import {
   UpdatedTime,
   UTCTime,
 } from "./MainStyles";
-
+import Tutorial from "../Tutorial/Tutorial";
 import Header from "../Header/Header";
 import MyTools from "../MyTools/MyTools";
 import StatsHeader from "../StatsHeader/StatsHeader";
@@ -25,6 +25,7 @@ function App() {
   const [farmActive, setFarmActive] = useState(false);
   const [lastUpdated, setLastUpdated] = useState(new Date());
   const [utcTime, setUtcTime] = useState(getTime12HVerbose(new Date()));
+  const [showTutorial, setShowTutorial] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(async () => await refreshData(), 60 * 1000 * 15);
@@ -61,7 +62,8 @@ function App() {
 
   return (
     <React.Fragment>
-      <Header farmActive={farmActive} />
+      {showTutorial && <Tutorial setShowTutorial={setShowTutorial} />}
+      <Header farmActive={farmActive} setShowTutorial={setShowTutorial} />
       <DataBar>
         {farmActive && (
           <React.Fragment>
