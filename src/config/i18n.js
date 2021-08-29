@@ -96,8 +96,8 @@ i18n
           header: {
             "token-add": "Add a valid access token",
             "allow-farm": "Ready to farm!! 😎🌿",
-            "deny-farm": "You can't farm in this moment 😥",
-            "invalid-token": "Please, add a valid token to start",
+            "deny-farm": "Farm closed 😥",
+            "invalid-token": "Please, add a valid token",
           },
           harvest: {
             title: "total harvestable: {{value}}",

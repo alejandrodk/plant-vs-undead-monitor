@@ -83,7 +83,7 @@ function App() {
         ) : token ? (
           <InactiveFarm>
             <Logo src="pvu-monitor-logo-2.png" />
-            <Trans i18nKey="main.deny-farm" />
+            <h3><Trans i18nKey="main.deny-farm" /></h3>
             <Trans i18nKey="main.page-update" />
           </InactiveFarm>
         ) : (

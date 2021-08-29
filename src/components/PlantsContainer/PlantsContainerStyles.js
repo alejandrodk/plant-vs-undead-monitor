@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { devices } from "../../helpers/screens";
 
 export const PlantsContainer = styled.div`
   width: 100%;

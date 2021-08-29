@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { devices } from "../../helpers/screens";
 
 export const Container = styled.div`
   height: 25px;

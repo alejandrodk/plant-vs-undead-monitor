@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { devices } from "../../helpers/screens";
 
 export const DataBar = styled.div`
   width: 100vw;
