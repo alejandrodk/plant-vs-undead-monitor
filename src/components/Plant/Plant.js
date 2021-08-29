@@ -83,11 +83,11 @@ function PlantComp(props) {
       <ProfitWrapper>
         <ProfitIcon src="/le.svg" />
         <Profit>{plant?.rate.le || 0}</Profit>
-        <ProfitIcon src="/dollar.svg" style={{ width: "12px" }} />
-        <Profit>
+        <ProfitIcon src="/dollar.svg" style={{ width: "12px" }} title="beneficio aproximado en USD al cosechar"/>
+        <Profit title="beneficio aproximado en USD al cosechar">
           {(plant && ((plant.rate.le / 100) * pvuUSD).toFixed(2)) || 0}
         </Profit>
-        <Profit>🕕 {calculateTime(plant)}</Profit>
+        <Profit title="tiempo restante para cosechar">🕕 {calculateTime(plant)}</Profit>
       </ProfitWrapper>
     </Plant>
   );
