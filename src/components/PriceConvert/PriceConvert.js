@@ -13,7 +13,7 @@ const PriceConvert = () => {
       (async function () {
         const controller = new Controller(token);
         try {
-          const { price_usd, price_bnb } = await controller.pvuPrice();
+          const { price_usd, price_bnb } = await controller.pvuPrice() || {};
 
           if (price_usd && price_bnb) {
             setPvuUSD(price_usd);

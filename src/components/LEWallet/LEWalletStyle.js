@@ -18,7 +18,7 @@ export const Container = styled.div`
   border-radius: 15px;
   color: white;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     margin-right: 0px;
     height: 20px;
     width: 40%;
@@ -28,7 +28,7 @@ export const Container = styled.div`
 `;
 
 export const Logo = styled.img`
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     width: 20px;
   }
 `;

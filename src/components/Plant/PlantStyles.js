@@ -18,7 +18,7 @@ export const Plant = styled.div`
   margin-right: 15px;
   margin-bottom: 15px;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     width: 100%;
     margin: auto;
   }

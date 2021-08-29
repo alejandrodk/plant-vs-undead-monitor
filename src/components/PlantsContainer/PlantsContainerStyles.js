@@ -10,7 +10,7 @@ export const PlantsContainer = styled.div`
   z-index: 5;
   margin-bottom: 5%;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     justify-content: center;
     padding: 5px;
     margin-bottom: 20%;
@@ -30,7 +30,7 @@ export const PlantsContainerTitle = styled.h3`
   color: white;
   font-family: Luckiest Guy;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     width: 100%;
     text-align: center;
     padding: 10px;

@@ -20,7 +20,7 @@ export const Container = styled.div`
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: white;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     padding: 10px;
     margin: 5px;
     width: 100%;
@@ -35,7 +35,7 @@ export const Header = styled.div`
   align-content: center;
   font-weight: bold;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     font-size: 15px;
   }
 `;
@@ -59,7 +59,7 @@ export const Value = styled.span`
   font-family: Luckiest Guy;
   font-size: 25px;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     font-size: 15px;
   }
 `;

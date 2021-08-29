@@ -17,7 +17,7 @@ export const Container = styled.div`
   border-radius: 15px;
   color: #161d29;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     display: none;
   }
 `;

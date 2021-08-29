@@ -19,7 +19,7 @@ export const Container = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: white;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     padding: 10px;
     margin: 5px;
     width: 100%;
@@ -45,7 +45,7 @@ export const Value = styled.span`
   font-family: Luckiest Guy;
   font-size: 25px;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     font-size: 15px;
   }
 `;

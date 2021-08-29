@@ -16,7 +16,7 @@ export const Container = styled.div`
   margin: 15px;
   border-radius: 15px;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     width: 40%;
     justify-content: space-between;
     margin-bottom: 0px;
@@ -34,7 +34,7 @@ export const Tool = styled.div`
   padding-left: 10px;
   padding-right: 10px;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     padding: 0px;
     margin: auto;
   }
@@ -43,7 +43,7 @@ export const Tool = styled.div`
 export const ToolImg = styled.img`
   width: 50px;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     width: 35px;
   }
 `;
@@ -58,7 +58,7 @@ export const Quantity = styled.div`
   padding: 5px;
   border-radius: 10px;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     position: relative;
     right: 0;
     top: 0;
@@ -68,7 +68,7 @@ export const Quantity = styled.div`
 export const Space = styled.span`
   width: 15px;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     display: none;
   }
 `;

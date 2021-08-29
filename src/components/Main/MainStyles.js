@@ -18,7 +18,7 @@ export const Container = styled.div`
   overflow: hidden;
   z-index: 2;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     overflow-x: auto;
     padding: 5px;
     width: 98%;
@@ -34,7 +34,7 @@ export const InactiveFarm = styled.div`
   margin: 50px auto;
   text-align: center;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     font-size: 15px;
   }
 `;
@@ -47,7 +47,7 @@ export const Tree = styled.img`
   opacity: 1;
   position: fixed;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     display: none;
   }
 `;
@@ -68,7 +68,7 @@ export const UpdatedTimeWrapper = styled.div`
   justify-content: center;
   z-index: 5;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     left: 0%;
     width: 100%;
   }
@@ -77,7 +77,7 @@ export const UpdatedTimeWrapper = styled.div`
 export const UpdatedTime = styled.h3`
   color: white;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     font-size: 13px;
   }
 `;
@@ -97,7 +97,7 @@ export const UTCTime = styled.span`
   z-index: 5;
   margin: auto;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     display: none;
   }
 `;

@@ -14,7 +14,7 @@ export const Header = styled.div`
   border-radius: 15px;
   box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2);
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     margin: 0px;
     width: 45%;
     margin: 5px;

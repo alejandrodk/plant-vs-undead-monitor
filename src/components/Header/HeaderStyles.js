@@ -14,7 +14,7 @@ export const Header = styled.div`
   padding: 10px;
   z-index: 3;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     height: auto;
   }
 `;
@@ -24,7 +24,7 @@ export const Logo = styled.img`
   height: auto;
   margin: 0px auto;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     width: 75px;
   }
 `;
@@ -35,7 +35,7 @@ export const Title = styled.h1`
   font-family: Luckiest Guy;
   color: #161d29;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     width: 70%;
     text-align: center;
     font-size: 25px;
@@ -55,7 +55,7 @@ export const TokenWrapper = styled.div`
   font-weight: bold;
   color: #161d29;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     flex-wrap: wrap;
     width: 100%;
     height: auto;
@@ -68,7 +68,7 @@ export const TokenWrapper = styled.div`
 `;
 
 export const TokenLabel = styled.span`
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     width: 100%;
     text-align: center;
     font-size: 15px;
@@ -86,7 +86,7 @@ export const TokenInput = styled.input`
   background-color: rgba(255, 255, 255, 0.8);
   color: #161d29;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     width: 90%;
     margin: auto;
   }
@@ -119,7 +119,7 @@ export const FarmSignal = styled.div`
   font-family: Luckiest Guy;
   font-size: 20px;
 
-  @media (${devices.mobileL}) {
+  @media (max-width: 425px) {
     width: 70%;
     font-size: 15px;
     padding: 5px;
