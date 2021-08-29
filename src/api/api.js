@@ -12,7 +12,7 @@ import weather from "../mocks/weather";
 
 export default class Controller {
   token;
-  test = false;
+  test = true;
   constructor(token) {
     this.token = token;
   }

@@ -37,20 +37,6 @@ export const MonitorLogo = styled.img`
   }
 `;
 
-export const Title = styled.h1`
-  text-align: left;
-  width: 15%;
-  font-family: Luckiest Guy;
-  color: #161d29;
-
-  @media (max-width: 425px) {
-    width: 70%;
-    text-align: center;
-    font-size: 25px;
-    margin-right: 5%;
-  }
-`;
-
 export const TokenWrapper = styled.div`
   width: 50%;
   height: 70%;

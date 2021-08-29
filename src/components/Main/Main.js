@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Trans, useTranslation } from "react-i18next";
 import { AppContext } from "../../data/AppContext";
 import Controller from "../../api/api";
 import {
@@ -22,6 +23,7 @@ import { getTime12HVerbose } from "../../helpers/time.helper";
 import { format } from "date-fns";
 
 function App() {
+  const { t } = useTranslation();
   const { token } = useContext(AppContext);
   const [farmActive, setFarmActive] = useState(false);
   const [lastUpdated, setLastUpdated] = useState(new Date());
@@ -81,25 +83,31 @@ function App() {
         ) : token ? (
           <InactiveFarm>
             <Logo src="pvu-monitor-logo-2.png" />
-            <h1>No puedes farmear en este momento ❌</h1>
-            <p>
-              no debes recargar la página, se actualiza automáticamente cada 15
-              minutos. ⏰
-            </p>
+            <Trans i18nKey="main.deny-farm" />
+            <Trans i18nKey="main.page-update" />
           </InactiveFarm>
         ) : (
           <InactiveFarm>
-            <h1>Agrega un token válido</h1>
+            <h1>
+              <Trans i18nKey="main.add-token" />
+            </h1>
           </InactiveFarm>
         )}
         <Tree src="/tree.png" />
         <UpdatedTimeWrapper>
-          <UpdatedTime>{`actualizado: ${format(
-            lastUpdated,
-            "h:mm aaa"
-          )} | ${getTime12HVerbose(new Date(lastUpdated))} UTC`}</UpdatedTime>
+          <UpdatedTime>
+            {
+              <Trans
+                i18nKey="main.updated"
+                values={{
+                  lastDate: format(lastUpdated, "h:mm aaa"),
+                  currentDate: getTime12HVerbose(new Date(lastUpdated)),
+                }}
+              />
+            }
+          </UpdatedTime>
         </UpdatedTimeWrapper>
-        <UTCTime>{"🕕 Hora UTC " + utcTime}</UTCTime>
+        <UTCTime>{t("main.time") + utcTime}</UTCTime>
       </Container>
     </React.Fragment>
   );

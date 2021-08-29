@@ -1,5 +1,6 @@
 import { isAfter } from "date-fns";
 import React, { useContext } from "react";
+import { Trans, useTranslation } from "react-i18next";
 import { AppContext } from "../../data/AppContext";
 import {
   addHoursToDate,
@@ -29,6 +30,7 @@ import {
 function PlantComp(props) {
   const { plant } = props;
   const { pvuUSD } = useContext(AppContext);
+  const { t } = useTranslation();
 
   function calculateTime(plant) {
     if (!plant) return 0;
@@ -39,7 +41,7 @@ function PlantComp(props) {
       plant.plant.farmConfig.hours
     );
 
-    if (isAfter(current, end)) return "LISTO!";
+    if (isAfter(current, end)) return t("plant.ready");
 
     return hoursDiff(current, end);
   }
@@ -55,16 +57,26 @@ function PlantComp(props) {
       </PlantImageContainer>
       <PlantDataContainer>
         <PlantDataWrapper>
-          <PlantDataTitle>creada: </PlantDataTitle>
+          <PlantDataTitle>
+            <Trans i18nKey="plant.created" />
+          </PlantDataTitle>
           <PlantDataValue>{verboseDate(plant?.createdAt)}</PlantDataValue>
         </PlantDataWrapper>
         <PlantDataWrapper>
-          <PlantDataTitle>necesita agua?: </PlantDataTitle>
-          <PlantDataValue>{plant?.needWater ? "si" : "no"}</PlantDataValue>
+          <PlantDataTitle>
+            <Trans i18nKey="plant.need-water" />
+          </PlantDataTitle>
+          <PlantDataValue>
+            {plant?.needWater ? t("plant.yes") : t("plant.no")}
+          </PlantDataValue>
         </PlantDataWrapper>
         <PlantDataWrapper>
-          <PlantDataTitle>espantar cuervo?: </PlantDataTitle>
-          <PlantDataValue>{plant?.hasCrow ? "si" : "no"}</PlantDataValue>
+          <PlantDataTitle>
+            <Trans i18nKey="plant.has-crow" />
+          </PlantDataTitle>
+          <PlantDataValue>
+            {plant?.hasCrow ? t("plant.yes") : t("plant.no")}
+          </PlantDataValue>
         </PlantDataWrapper>
       </PlantDataContainer>
       <ActiveItemsWrapper>
@@ -72,7 +84,7 @@ function PlantComp(props) {
           <PlantActiveItem
             key={tool.id}
             type={tool.type}
-            title={`finaliza el: ${getDateWithLocalOffset(
+            title={`${t("plant.finished")} ${getDateWithLocalOffset(
               new Date(tool.endTime)
             )}`}
           >
@@ -83,11 +95,17 @@ function PlantComp(props) {
       <ProfitWrapper>
         <ProfitIcon src="/le.svg" />
         <Profit>{plant?.rate.le || 0}</Profit>
-        <ProfitIcon src="/dollar.svg" style={{ width: "12px" }} title="beneficio aproximado en USD al cosechar"/>
-        <Profit title="beneficio aproximado en USD al cosechar">
+        <ProfitIcon
+          src="/dollar.svg"
+          style={{ width: "12px" }}
+          title={t("plant.profit-dollar")}
+        />
+        <Profit title={t("plant.profit-dollar")}>
           {(plant && ((plant.rate.le / 100) * pvuUSD).toFixed(2)) || 0}
         </Profit>
-        <Profit title="tiempo restante para cosechar">🕕 {calculateTime(plant)}</Profit>
+        <Profit title={t("plant.time-to-harvest")}>
+          🕕 {calculateTime(plant)}
+        </Profit>
       </ProfitWrapper>
     </Plant>
   );

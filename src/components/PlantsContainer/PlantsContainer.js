@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import { Trans } from "react-i18next";
 import { AppContext } from "../../data/AppContext";
 import Controller from "../../api/api";
 import Plant from "../Plant/Plant";
@@ -22,7 +23,9 @@ function PlantsContainerComp() {
 
   return (
     <React.Fragment>
-      <PlantsContainerTitle>Mi granja</PlantsContainerTitle>
+      <PlantsContainerTitle>
+        <Trans i18nKey="plantsContainer.title" />
+      </PlantsContainerTitle>
       <PlantsContainer>
         {plants &&
           [

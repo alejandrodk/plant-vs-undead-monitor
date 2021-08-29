@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
+import { useTranslation } from "react-i18next";
 import { AppContext } from "../../data/AppContext";
 import { Container, Header, Price, Img, Value } from "./ProfitStyles";
 
 const Profit = () => {
+  const { t } = useTranslation();
   const { currentLe, pvuUSD } = useContext(AppContext);
 
   return (
     <Container>
-      <Header>
-        Ganancias:
-      </Header>
+      <Header>{t("profit.title")}</Header>
       <Price title="PVU">
         <Img src="le.svg" />
         <Value>{currentLe} =</Value>
@@ -18,7 +18,7 @@ const Profit = () => {
         <Img src="pvu.svg" />
         <Value>{(currentLe / 100).toFixed(2)}</Value>
       </Price>
-      <Price title="Ganancia en dólares">
+      <Price title={t("profit.usd-title")}>
         <Img
           src="dollar.svg"
           style={{

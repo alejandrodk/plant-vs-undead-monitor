@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react";
+import { Trans } from "react-i18next";
 import { AppContext } from "../../data/AppContext";
 
 import {
@@ -6,7 +7,6 @@ import {
   Header,
   Logo,
   MonitorLogo,
-  Title,
   TokenInput,
   TokenWrapper,
   TokenLabel,
@@ -28,9 +28,11 @@ const HeaderComp = (props) => {
   return (
     <Header>
       <Logo src="/Logo.png" />
-      <MonitorLogo src="/pvu-monitor-logo.png"/>
+      <MonitorLogo src="/pvu-monitor-logo.png" />
       <TokenWrapper>
-        <TokenLabel>Agrega tu token de acceso</TokenLabel>
+        <TokenLabel>
+          <Trans i18nKey="header.token-add" />
+        </TokenLabel>
         <TokenInput
           type="text"
           value={token || ""}
@@ -41,11 +43,15 @@ const HeaderComp = (props) => {
         <QuestionSign onClick={() => setShowTutorial(true)}>?</QuestionSign>
       </TokenWrapper>
       <FarmSignal active={farmActive}>
-        {token
-          ? farmActive
-            ? "Puedes farmear 😎🌿"
-            : "No puedes farmear 😥"
-          : "Agrega un token válido"}
+        {token ? (
+          farmActive ? (
+            <Trans i18nKey="header.allow-farm" />
+          ) : (
+            <Trans i18nKey="header.deny-farm" />
+          )
+        ) : (
+          <Trans i18nKey="header.invalid-token" />
+        )}
       </FarmSignal>
     </Header>
   );

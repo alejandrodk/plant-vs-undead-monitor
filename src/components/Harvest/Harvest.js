@@ -1,9 +1,10 @@
 import { Container } from "./HarvestStyle";
+import { Trans } from "react-i18next";
 
 function HarvestComponent({ value = 0 }) {
   return (
     <Container>
-      {`cosechas disponibles: ${value}`}
+      <Trans i18nKey="harvest.title" values={{ value }} />
     </Container>
   );
 }
