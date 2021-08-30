@@ -34,7 +34,7 @@ export default class Controller {
     return !this.test
       ? await (
           await fetch(
-            "https://backend-farm-stg.plantvsundead.com/daily-quest",
+            "https://backend-farm.plantvsundead.com/daily-quest",
             {
               headers: this.getHeaders(),
             }
@@ -103,7 +103,7 @@ export default class Controller {
   async myTools() {
     return !this.test
       ? await (
-          await fetch("https://backend-farm-stg.plantvsundead.com/my-tools", {
+          await fetch("https://backend-farm.plantvsundead.com/my-tools", {
             headers: this.getHeaders(),
           })
         ).json()
