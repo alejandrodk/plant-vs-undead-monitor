@@ -11,6 +11,8 @@ import {
   UpdatedTimeWrapper,
   UpdatedTime,
   UTCTime,
+  GroupWrapper,
+  GroupLabel,
 } from "./MainStyles";
 import Tutorial from "../Tutorial/Tutorial";
 import Header from "../Header/Header";
@@ -19,13 +21,18 @@ import StatsHeader from "../StatsHeader/StatsHeader";
 import PriceConvert from "../PriceConvert/PriceConvert";
 import Profit from "../Profit/Profit";
 import PlantsContainer from "../PlantsContainer/PlantsContainer";
-import { getTime12HVerbose } from "../../helpers/time.helper";
+import {
+  getDateWithLocalOffset,
+  getTime12HVerbose,
+} from "../../helpers/time.helper";
 import { format } from "date-fns";
+import { differenceInMinutes } from "date-fns/esm";
 
 function App() {
   const { t } = useTranslation();
   const { token } = useContext(AppContext);
   const [farmActive, setFarmActive] = useState(false);
+  const [group, setGroup] = useState(null);
   const [lastUpdated, setLastUpdated] = useState(new Date());
   const [utcTime, setUtcTime] = useState(getTime12HVerbose(new Date()));
   const [showTutorial, setShowTutorial] = useState(false);
@@ -56,11 +63,25 @@ function App() {
 
     const { status } = res.data;
 
-    if (status == 1) setFarmActive(true);
+    if (status == 1) {
+      setFarmActive(true);
+    }
 
     if (farmActive && status == 0) setFarmActive(false);
 
+    setGroup(res.data);
     setLastUpdated(new Date());
+  }
+
+  function getDifferenceInGroups(date) {
+    const difference = differenceInMinutes(
+      new Date(),
+      new Date(date)
+    );
+
+    return difference < 60
+      ? `${difference} ${t("main.group-minutes")}`
+      : `${(difference / 60).toFixed(1)} ${t("main.group-hours")}`;
   }
 
   return (
@@ -83,7 +104,22 @@ function App() {
         ) : token ? (
           <InactiveFarm>
             <Logo src="pvu-monitor-logo-2.png" />
-            <h3><Trans i18nKey="main.deny-farm" /></h3>
+            <h3>
+              <Trans i18nKey="main.deny-farm" />
+            </h3>
+            {group?.inGroup && (
+              <GroupWrapper>
+                <GroupLabel>{`${t("main.group-me")} ${
+                  group?.inGroup
+                }`}</GroupLabel>
+                <GroupLabel>{`${t("main.group-current")} ${
+                  group?.currentGroup
+                }`}</GroupLabel>
+                <GroupLabel>{`${t("main.group-next")} ${getDifferenceInGroups(
+                  group?.nextGroup
+                )}`}</GroupLabel>
+              </GroupWrapper>
+            )}
             <Trans i18nKey="main.page-update" />
           </InactiveFarm>
         ) : (

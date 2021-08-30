@@ -38,6 +38,11 @@ i18n
             "add-token": "Agrega un token válido",
             updated: "actualizado: {{lastDate}} | {{currentDate}} UTC",
             time: "🕕 Hora UTC ",
+            "group-me": "Mi grupo:",
+            "group-current": "Grupo actual:",
+            "group-next": "Siguiente grupo:",
+            "group-minutes": "minutos",
+            "group-hours": "horas",
           },
           plant: {
             created: "📅 creada",
@@ -112,6 +117,11 @@ i18n
             "add-token": "Please, add a valid token",
             updated: "updated: {{lastDate}} | {{currentDate}} UTC",
             time: "🕕 UTC Time ",
+            "group-me": "My group:",
+            "group-current": "Current group:",
+            "group-next": "Next group:",
+            "group-minutes": "minutes",
+            "group-hours": "hours",
           },
           plant: {
             created: "📅 created",
@@ -147,8 +157,7 @@ i18n
             title3: "3- What can PVU Monitor do with my token?",
             text3:
               "With your access token, the only thing we can do is consult public information about your user. PVU Monitor",
-            "text3-1":
-              " CANNOT MAKE ANY CHANGES OR ACTIONS TO YOUR ACCOUNT.",
+            "text3-1": " CANNOT MAKE ANY CHANGES OR ACTIONS TO YOUR ACCOUNT.",
             "text3-2":
               "All operations carried out within the marketplace must be approved from Metamask.",
             title4: "4- How to get my token?",

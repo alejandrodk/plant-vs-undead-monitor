@@ -39,11 +39,33 @@ export const InactiveFarm = styled.div`
 `;
 
 export const Logo = styled.img`
-  width: 50%;
+  width: 25%;
 
   @media (max-width: 425px) {
     width: 100%;
   }
+`;
+
+export const GroupWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  width: 50%;
+  margin: auto;
+
+  @media (max-width: 425px) {
+    width: 80%;
+  }
+`;
+
+export const GroupLabel = styled.div`
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 2px solid white;
+  background-color: #31353b2e;
+  color: white;
 `;
 
 export const Tree = styled.img`
