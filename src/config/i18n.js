@@ -34,7 +34,7 @@ i18n
           main: {
             "deny-farm": "No puedes farmear en este momento ❌",
             "page-update":
-              "<p>no debes recargar la página, se actualiza automáticamente cada 15 minutos. ⏰</p>",
+              "<p>no debes recargar la página, se actualiza automáticamente cada 5 minutos. ⏰</p>",
             "add-token": "Agrega un token válido",
             updated: "actualizado: {{lastDate}} | {{currentDate}} UTC",
             time: "🕕 Hora UTC ",
@@ -108,7 +108,7 @@ i18n
           main: {
             "deny-farm": "You can't farm in this moment ❌",
             "page-update":
-              "you should not reload the page, it is automatically updated every 15 minutes ⏰",
+              "you should not reload the page, it is automatically updated every 5 minutes ⏰",
             "add-token": "Please, add a valid token",
             updated: "updated: {{lastDate}} | {{currentDate}} UTC",
             time: "🕕 UTC Time ",

@@ -31,7 +31,7 @@ function App() {
   const [showTutorial, setShowTutorial] = useState(false);
 
   useEffect(() => {
-    const timer = setInterval(async () => await refreshData(), 60 * 1000 * 15);
+    const timer = setInterval(async () => await refreshData(), 60 * 1000 * 5);
 
     if (token && !farmActive) {
       (async function () {
