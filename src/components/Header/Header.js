@@ -20,9 +20,11 @@ const HeaderComp = (props) => {
   useEffect(() => {
     if (!token) {
       setToken(localStorage.getItem("appToken"));
-    } else {
-      localStorage.setItem("appToken", token);
     }
+  }, []);
+
+  useEffect(() => {
+    token?.length > 200 && localStorage.setItem("appToken", token);
   }, [token]);
 
   return (
@@ -36,9 +38,7 @@ const HeaderComp = (props) => {
         <TokenInput
           type="text"
           value={token || ""}
-          onChange={({ target }) => {
-            target.value.length > 200 && setToken(target.value);
-          }}
+          onChange={({ target }) => setToken(target.value)}
         />
         <QuestionSign onClick={() => setShowTutorial(true)}>?</QuestionSign>
       </TokenWrapper>
