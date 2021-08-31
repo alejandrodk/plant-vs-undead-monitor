@@ -114,7 +114,7 @@ export const PlantActiveItemQuantity = styled.span`
   height: 10px;
   top: 0px;
   right: 0px;
-  background-color: red;
+  background-color: #c1344b;
   padding: 5px;
   border-radius: 50%;
   text-align: center;

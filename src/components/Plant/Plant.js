@@ -35,7 +35,7 @@ function PlantComp(props) {
   function calculateTime(plant) {
     if (!plant) return 0;
 
-    const current = getDateWithLocalOffset(new Date());
+    const current = new Date();
     const end = addHoursToDate(
       new Date(plant.startTime),
       plant.plant.farmConfig.hours
@@ -43,14 +43,16 @@ function PlantComp(props) {
 
     if (isAfter(current, end)) return t("plant.ready");
 
-    return hoursDiff(current, end);
+    return hoursDiff(end, current);
   }
 
   return (
     <Plant water={plant.needWater}>
       <PlantImageContainer>
         {plant.hasCrow && <CrowSVG src="/crow.png" />}
-        <PlantSVG src={plant?.plant?.iconUrl} />
+        <PlantSVG src={plant?.plant?.type == 1 ? "/sapling.svg" : "/mama.svg"} 
+          style={plant?.plant?.type == 1 ? {width: "115px"} : {}}
+        />
         <LandSVG
           src={plant?.needWater ? "/land_3d_need_water.svg" : "/land_3d.svg"}
         />
