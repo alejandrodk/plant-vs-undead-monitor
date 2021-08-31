@@ -57,6 +57,7 @@ i18n
           },
           plantsContainer: {
             title: "Mi granja 👨‍🌾",
+            "title-coords": "Coordenadas 🌐",
           },
           priceConvert: {
             usd: "Precio en dólares",
@@ -65,6 +66,17 @@ i18n
           profit: {
             title: "Ganancias:",
             "usd-title": "Ganancia aproximada en dólares",
+          },
+          coords: {
+            loading:
+              "Cargando coordenadas, esto puede tomar de 2 a 4 minutos (según tu conexión), por favor, no cierres la página...",
+            comment:
+              "El sistema de coordenadas esta en proceso de pruebas, cualquier error o sugerencia avisar por el canal de telegram. \n t.me/pvumonitor",
+            "key-coord": "Coordenadas",
+            "key-position": "Posición",
+            "key-water": "Riegos actuales",
+            "key-crow": "Cuervos",
+            "has-crow": "Cuervo!!",
           },
           tutorial: {
             title1: "1- ¿Qué es el token?",
@@ -136,6 +148,7 @@ i18n
           },
           plantsContainer: {
             title: "My Farm 👨‍🌾",
+            "title-coords": "Coordinates 🌐",
           },
           priceConvert: {
             usd: "USD Price",
@@ -144,6 +157,17 @@ i18n
           profit: {
             title: "Profits:",
             "usd-title": "Approximate profit in USD dollars",
+          },
+          coords: {
+            loading:
+              "Loading coordinates, this process could be take a few minutes, please, dont close this window...",
+            comment:
+              "The coordinates system is under test, any problem please report it \n t.me/pvumonitor",
+            "key-coord": "Coordinates",
+            "key-position": "Position",
+            "key-water": "Current Water",
+            "key-crow": "Crows",
+            "has-crow": "Crow!!",
           },
           tutorial: {
             title1: "1- What is a token?",

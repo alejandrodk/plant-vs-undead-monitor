@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PlantsContainer = styled.div`
+export const Section = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -16,7 +16,7 @@ export const PlantsContainer = styled.div`
   }
 `;
 
-export const PlantsContainerTitle = styled.h3`
+export const SectionTitle = styled.h3`
   font-size: 25px;
   font-weight: 300;
   background: #e9576f;
@@ -28,6 +28,8 @@ export const PlantsContainerTitle = styled.h3`
   margin: 0px;
   color: white;
   font-family: Luckiest Guy;
+  margin-right: 10px;
+  cursor: pointer;
 
   @media (max-width: 425px) {
     width: 100%;
@@ -35,5 +37,6 @@ export const PlantsContainerTitle = styled.h3`
     padding: 10px;
     margin: 0px;
     font-size: 18px;
+    margin-bottom: 5px;
   }
 `;

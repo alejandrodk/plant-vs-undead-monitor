@@ -4,6 +4,7 @@ import dailyQuest from "../mocks/dailyQuest";
 import farmingStats from "../mocks/farmingStats";
 import farmStatus from "../mocks/farmStatus";
 import land from "../mocks/land";
+import landDetail from '../mocks/landDetail';
 import myLand from "../mocks/myLand";
 import myTools from "../mocks/myTools";
 import plantDetail from "../mocks/plantDetail";
@@ -33,12 +34,9 @@ export default class Controller {
   async dailyQuest() {
     return !this.test
       ? await (
-          await fetch(
-            "https://backend-farm.plantvsundead.com/daily-quest",
-            {
-              headers: this.getHeaders(),
-            }
-          )
+          await fetch("https://backend-farm.plantvsundead.com/daily-quest", {
+            headers: this.getHeaders(),
+          })
         ).json()
       : dailyQuest;
   }
@@ -73,18 +71,18 @@ export default class Controller {
             }
           )
         ).json()
-      : land;
+      : await this.fakeRequest(land);
   }
 
   async LandDetail(owner, limit = "10", offset = "0") {
-    return await (
+    return !this.test ? (await (
       await fetch(
         `https://backend-farm.plantvsundead.com/farms/other/${owner}?limit=${limit}&offset=${offset}`,
         {
           headers: this.getHeaders(),
         }
       )
-    ).json();
+    ).json()) : await this.fakeRequest(landDetail);
   }
 
   async myLand() {
@@ -149,10 +147,18 @@ export default class Controller {
   getHeaders() {
     return {
       origin: "https://marketplace.plantvsundead.com",
-      referer: "https://marketplace.plantvsundead.com/",
+      Referer: "https://marketplace.plantvsundead.com/",
       Authorization: "Bearer " + this.token,
       "User-Agent":
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36",
     };
+  }
+
+  async fakeRequest(result) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(result);
+      }, 1000);
+    });
   }
 }
