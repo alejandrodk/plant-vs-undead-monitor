@@ -79,6 +79,10 @@ function App() {
       new Date(date)
     );
 
+    if (difference < 0) {
+      return format(new Date(date), "dd/MM/yyyy HH:mm");
+    }
+
     return difference < 60
       ? `${difference} ${t("main.group-minutes")}`
       : `${(difference / 60).toFixed(1)} ${t("main.group-hours")}`;

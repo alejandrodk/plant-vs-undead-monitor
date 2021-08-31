@@ -4,7 +4,7 @@ import dailyQuest from "../mocks/dailyQuest";
 import farmingStats from "../mocks/farmingStats";
 import farmStatus from "../mocks/farmStatus";
 import land from "../mocks/land";
-import landDetail from '../mocks/landDetail';
+import landDetail from "../mocks/landDetail";
 import myLand from "../mocks/myLand";
 import myTools from "../mocks/myTools";
 import plantDetail from "../mocks/plantDetail";
@@ -14,6 +14,10 @@ import weather from "../mocks/weather";
 export default class Controller {
   token;
   test = false;
+  env = "stage";
+  stage = "https://backend-farm-stg.plantvsundead.com";
+  prod = "https://backend-farm.plantvsundead.com";
+  host = this.env === "stage" ? this.stage : this.prod;
   constructor(token) {
     this.token = token;
   }
@@ -54,7 +58,7 @@ export default class Controller {
   async farmStatus() {
     return !this.test
       ? await (
-          await fetch("https://backend-farm.plantvsundead.com/farm-status", {
+          await fetch(this.host + "/farm-status", {
             headers: this.getHeaders(),
           })
         ).json()
@@ -64,36 +68,32 @@ export default class Controller {
   async Land(latitud, longitud) {
     return !this.test
       ? await (
-          await fetch(
-            `https://backend-farm.plantvsundead.com/land/${latitud}/${longitud}`,
-            {
-              headers: this.getHeaders(),
-            }
-          )
+          await fetch(`${this.host}/land/${latitud}/${longitud}`, {
+            headers: this.getHeaders(),
+          })
         ).json()
       : await this.fakeRequest(land);
   }
 
   async LandDetail(owner, limit = "10", offset = "0") {
-    return !this.test ? (await (
-      await fetch(
-        `https://backend-farm.plantvsundead.com/farms/other/${owner}?limit=${limit}&offset=${offset}`,
-        {
-          headers: this.getHeaders(),
-        }
-      )
-    ).json()) : await this.fakeRequest(landDetail);
+    return !this.test
+      ? await (
+          await fetch(
+            `https://backend-farm.plantvsundead.com/farms/other/${owner}?limit=${limit}&offset=${offset}`,
+            {
+              headers: this.getHeaders(),
+            }
+          )
+        ).json()
+      : await this.fakeRequest(landDetail);
   }
 
   async myLand() {
     return !this.test
       ? await (
-          await fetch(
-            "https://backend-farm.plantvsundead.com/farms?limit=10&offset=0",
-            {
-              headers: this.getHeaders(),
-            }
-          )
+          await fetch(this.host + "/farms?limit=10&offset=0", {
+            headers: this.getHeaders(),
+          })
         ).json()
       : myLand;
   }
