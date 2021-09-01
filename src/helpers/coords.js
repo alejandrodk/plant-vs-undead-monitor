@@ -34,14 +34,15 @@ async function getAvailableLands(token) {
   await ranges.reduce(async (acc, curr) => {
     const coord = curr.toString();
     const formatCoord = `${coord}/${coord}`;
+
+    const { data } = await acc || {};
+    const owner = data?.ownerId;
+
+    if (!owner) blackList.push(formatCoord);
+
     const IS_BLACK_LISTED = blackList.includes(formatCoord);
 
-    const { data } = await acc;
-
     if (data && !IS_BLACK_LISTED) {
-      const owner = data.ownerId;
-      // TODO: comprobar si la land esta habilitada, sino mandar a blacklist
-      // TODO: status 1????
       const { data: landResult } = await controller.LandDetail(owner);
 
       const plants =
