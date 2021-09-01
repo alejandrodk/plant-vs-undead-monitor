@@ -17,7 +17,8 @@ export default class Controller {
   env = "stage";
   stage = "https://backend-farm-stg.plantvsundead.com";
   prod = "https://backend-farm.plantvsundead.com";
-  host = this.env === "stage" ? this.stage : this.prod;
+  proxy = "https://cors.bridged.cc/";
+  host = this.proxy + this.env === "stage" ? this.stage : this.prod;
   constructor(token) {
     this.token = token;
   }
@@ -25,32 +26,21 @@ export default class Controller {
   async availableTools() {
     return !this.test
       ? await (
-          await fetch(
-            "https://backend-farm-stg.plantvsundead.com/available-tools",
-            this.getConfig()
-          )
+          await fetch(this.host + "/available-tools", this.getConfig())
         ).json()
       : availableTools;
   }
 
   async dailyQuest() {
     return !this.test
-      ? await (
-          await fetch(
-            "https://backend-farm.plantvsundead.com/daily-quest",
-            this.getConfig()
-          )
-        ).json()
+      ? await (await fetch(this.host + "/daily-quest", this.getConfig())).json()
       : dailyQuest;
   }
 
   async farmingStats() {
     return !this.test
       ? await (
-          await fetch(
-            "https://backend-farm.plantvsundead.com/farming-stats",
-            this.getConfig()
-          )
+          await fetch(this.host + "/farming-stats", this.getConfig())
         ).json()
       : farmingStats;
   }
@@ -65,7 +55,7 @@ export default class Controller {
     return !this.test
       ? await (
           await fetch(
-            `${this.host}/land/${latitud}/${longitud}`,
+            `${this.proxy + this.host}/land/${latitud}/${longitud}`,
             this.getConfig()
           )
         ).json()
@@ -76,7 +66,7 @@ export default class Controller {
     return !this.test
       ? await (
           await fetch(
-            `https://backend-farm.plantvsundead.com/farms/other/${owner}?limit=${limit}&offset=${offset}`,
+            `${this.proxy}https://backend-farm.plantvsundead.com/farms/other/${owner}?limit=${limit}&offset=${offset}`,
             this.getConfig()
           )
         ).json()
@@ -100,10 +90,7 @@ export default class Controller {
   async plantDetail(plantId) {
     return !this.test
       ? await (
-          await fetch(
-            "https://backend-farm.plantvsundead.com/farms/" + plantId,
-            this.getConfig()
-          )
+          await fetch(this.host + "/farms/" + plantId, this.getConfig())
         ).json()
       : plantDetail;
   }
@@ -122,10 +109,7 @@ export default class Controller {
   async weather() {
     return !this.test
       ? await (
-          await fetch(
-            "https://backend-farm-stg.plantvsundead.com/weather-today",
-            this.getConfig()
-          )
+          await fetch(this.host + "/weather-today", this.getConfig())
         ).json()
       : weather;
   }
