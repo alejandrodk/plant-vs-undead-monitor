@@ -43,6 +43,7 @@ i18n
             "group-next": "Siguiente grupo:",
             "group-minutes": "minutos",
             "group-hours": "horas",
+            "donation-title": "¿Quieres apoyar al proyecto?",
           },
           plant: {
             created: "📅 creada",
@@ -134,6 +135,7 @@ i18n
             "group-next": "Next group:",
             "group-minutes": "minutes",
             "group-hours": "hours",
+            "donation-title": "Make a donation",
           },
           plant: {
             created: "📅 created",

@@ -164,7 +164,7 @@ function App() {
         )}
         <Tree src="/tree.png" />
         <Donate>
-          <h3>¿Quieres apoyar al proyecto?</h3>
+          <h3>{t("main.donation-title")}</h3>
           <DonateIcon
             onClick={() => {
               copyToClipboard("0x4fadffe72b191f081886b68485cf69be807a216b");

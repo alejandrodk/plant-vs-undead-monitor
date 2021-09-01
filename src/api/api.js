@@ -14,11 +14,10 @@ import weather from "../mocks/weather";
 export default class Controller {
   token;
   test = false;
-  env = "stage";
   stage = "https://backend-farm-stg.plantvsundead.com";
   prod = "https://backend-farm.plantvsundead.com";
   proxy = "https://cors.bridged.cc/";
-  host = this.proxy + this.env === "stage" ? this.stage : this.prod;
+  host = this.proxy + this.stage;
   constructor(token) {
     this.token = token;
   }
