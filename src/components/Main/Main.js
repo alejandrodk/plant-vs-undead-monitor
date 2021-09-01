@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Trans, useTranslation } from "react-i18next";
+import { format } from "date-fns";
+import { differenceInMinutes } from "date-fns/esm";
 import { AppContext } from "../../data/AppContext";
 import Controller from "../../api/api";
 import {
@@ -13,20 +15,17 @@ import {
   UTCTime,
   GroupWrapper,
   GroupLabel,
+  QuestionSign,
 } from "./MainStyles";
 import Tutorial from "../Tutorial/Tutorial";
+import Modal from "../Modal/Modal";
 import Header from "../Header/Header";
 import MyTools from "../MyTools/MyTools";
 import StatsHeader from "../StatsHeader/StatsHeader";
 import PriceConvert from "../PriceConvert/PriceConvert";
 import Profit from "../Profit/Profit";
 import PlantsContainer from "../PlantsContainer/PlantsContainer";
-import {
-  getDateWithLocalOffset,
-  getTime12HVerbose,
-} from "../../helpers/time.helper";
-import { format } from "date-fns";
-import { differenceInMinutes } from "date-fns/esm";
+import { getTime12HVerbose } from "../../helpers/time.helper";
 
 function App() {
   const { t } = useTranslation();
@@ -36,6 +35,7 @@ function App() {
   const [lastUpdated, setLastUpdated] = useState(new Date());
   const [utcTime, setUtcTime] = useState(getTime12HVerbose(new Date()));
   const [showTutorial, setShowTutorial] = useState(false);
+  const [showSteps, setShowSteps] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(async () => await refreshData(), 60 * 1000 * 5);
@@ -74,10 +74,7 @@ function App() {
   }
 
   function getDifferenceInGroups(date) {
-    const difference = differenceInMinutes(
-      new Date(),
-      new Date(date)
-    );
+    const difference = differenceInMinutes(new Date(), new Date(date));
 
     if (difference < 0) {
       return format(new Date(date), "dd/MM/yyyy HH:mm");
@@ -103,11 +100,31 @@ function App() {
         {farmActive && <Profit />}
       </DataBar>
       <Container>
+        {showSteps && <Modal setShow={setShowSteps} />}
         {farmActive ? (
           <PlantsContainer />
         ) : token ? (
           <InactiveFarm>
-            <Logo src="pvu-monitor-logo-2.png" />
+            <div
+              style={{
+                backgroundColor: "#ab473c",
+                padding: "5px",
+                borderRadius: "15px",
+              }}
+            >
+              <h3>⚠</h3>
+              <p>
+                debido a nuevos cambios de seguridad en la plataforma de PVU,
+                por el momento es necesario seguir los siguientes pasos para
+                poder disfrutar de PVU Monitor. <br />
+                <br />
+                Click aquí para conocer los pasos: 👉
+                <QuestionSign onClick={() => setShowSteps(true)}>
+                  ?
+                </QuestionSign>
+              </p>
+            </div>
+            {/* <Logo src="pvu-monitor-logo-2.png" /> */}
             <h3>
               <Trans i18nKey="main.deny-farm" />
             </h3>

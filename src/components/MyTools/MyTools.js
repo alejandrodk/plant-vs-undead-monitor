@@ -15,7 +15,7 @@ const HeaderComp = () => {
         const { data } = await controller.myTools();
 
         if (data) {
-          setTools(data.filter(tool => tool.usages));
+          setTools(data?.filter(tool => tool.usages));
         }
       })();
     }

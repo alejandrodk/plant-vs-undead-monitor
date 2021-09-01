@@ -130,3 +130,16 @@ export const UTCTime = styled.span`
     display: none;
   }
 `;
+
+export const QuestionSign = styled.span`
+  margin-left: 10px;
+  background-color: white;
+  border: solid 4px #161d29;
+  color: #161d29;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 2.5px 7px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
+`;
