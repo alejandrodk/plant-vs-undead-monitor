@@ -74,7 +74,7 @@ function App() {
   }
 
   function getDifferenceInGroups(date) {
-    const difference = differenceInMinutes(new Date(), new Date(date));
+    const difference = differenceInMinutes(new Date(date), new Date());
 
     if (difference < 0) {
       return format(new Date(date), "dd/MM/yyyy HH:mm");
@@ -105,7 +105,7 @@ function App() {
           <PlantsContainer />
         ) : token ? (
           <InactiveFarm>
-            <div
+            {/* <div
               style={{
                 backgroundColor: "#ab473c",
                 padding: "5px",
@@ -123,8 +123,8 @@ function App() {
                   ?
                 </QuestionSign>
               </p>
-            </div>
-            {/* <Logo src="pvu-monitor-logo-2.png" /> */}
+            </div> */}
+            <Logo src="pvu-monitor-logo-2.png" />
             <h3>
               <Trans i18nKey="main.deny-farm" />
             </h3>
