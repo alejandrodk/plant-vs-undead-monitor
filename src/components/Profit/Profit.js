@@ -7,7 +7,7 @@ const Profit = () => {
   const { t } = useTranslation();
   const { currentLe, pvuUSD } = useContext(AppContext);
 
-  return (
+  return currentLe ? (
     <Container>
       <Header>{t("profit.title")}</Header>
       <Price title="PVU">
@@ -28,6 +28,8 @@ const Profit = () => {
         <Value>{((currentLe / 100) * pvuUSD).toFixed(2)}</Value>
       </Price>
     </Container>
+  ) : (
+    <React.Fragment />
   );
 };
 
