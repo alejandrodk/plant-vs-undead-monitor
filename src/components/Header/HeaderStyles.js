@@ -137,3 +137,15 @@ export const FarmSignal = styled.div`
     margin-bottom: 15px;
   }
 `;
+
+export const Telegram = styled.img`
+  width: 40px;
+  margin: auto;
+  cursor: pointer;
+
+  @media (max-width: 425px) {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+`;

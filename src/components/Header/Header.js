@@ -11,6 +11,7 @@ import {
   TokenWrapper,
   TokenLabel,
   QuestionSign,
+  Telegram,
 } from "./HeaderStyles";
 
 const HeaderComp = (props) => {
@@ -42,6 +43,13 @@ const HeaderComp = (props) => {
         />
         <QuestionSign onClick={() => setShowTutorial(true)}>?</QuestionSign>
       </TokenWrapper>
+      <a
+        href="https://t.me/pvumonitor"
+        target="_blank"
+        style={{ margin: "auto" }}
+      >
+        <Telegram src="/telegram.png" />
+      </a>
       <FarmSignal active={farmActive}>
         {token ? (
           farmActive ? (
