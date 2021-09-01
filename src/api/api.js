@@ -27,9 +27,7 @@ export default class Controller {
       ? await (
           await fetch(
             "https://backend-farm-stg.plantvsundead.com/available-tools",
-            {
-              headers: this.getHeaders(),
-            }
+            this.getConfig()
           )
         ).json()
       : availableTools;
@@ -38,9 +36,10 @@ export default class Controller {
   async dailyQuest() {
     return !this.test
       ? await (
-          await fetch("https://backend-farm.plantvsundead.com/daily-quest", {
-            headers: this.getHeaders(),
-          })
+          await fetch(
+            "https://backend-farm.plantvsundead.com/daily-quest",
+            this.getConfig()
+          )
         ).json()
       : dailyQuest;
   }
@@ -48,29 +47,27 @@ export default class Controller {
   async farmingStats() {
     return !this.test
       ? await (
-          await fetch("https://backend-farm.plantvsundead.com/farming-stats", {
-            headers: this.getHeaders(),
-          })
+          await fetch(
+            "https://backend-farm.plantvsundead.com/farming-stats",
+            this.getConfig()
+          )
         ).json()
       : farmingStats;
   }
 
   async farmStatus() {
     return !this.test
-      ? await (
-          await fetch(this.host + "/farm-status", {
-            headers: this.getHeaders(),
-          })
-        ).json()
+      ? await (await fetch(this.host + "/farm-status", this.getConfig())).json()
       : farmStatus;
   }
 
   async Land(latitud, longitud) {
     return !this.test
       ? await (
-          await fetch(`${this.host}/land/${latitud}/${longitud}`, {
-            headers: this.getHeaders(),
-          })
+          await fetch(
+            `${this.host}/land/${latitud}/${longitud}`,
+            this.getConfig()
+          )
         ).json()
       : await this.fakeRequest(land);
   }
@@ -80,9 +77,7 @@ export default class Controller {
       ? await (
           await fetch(
             `https://backend-farm.plantvsundead.com/farms/other/${owner}?limit=${limit}&offset=${offset}`,
-            {
-              headers: this.getHeaders(),
-            }
+            this.getConfig()
           )
         ).json()
       : await this.fakeRequest(landDetail);
@@ -91,20 +86,14 @@ export default class Controller {
   async myLand() {
     return !this.test
       ? await (
-          await fetch(this.host + "/farms?limit=10&offset=0", {
-            headers: this.getHeaders(),
-          })
+          await fetch(this.host + "/farms?limit=10&offset=0", this.getConfig())
         ).json()
       : myLand;
   }
 
   async myTools() {
     return !this.test
-      ? await (
-          await fetch("https://backend-farm.plantvsundead.com/my-tools", {
-            headers: this.getHeaders(),
-          })
-        ).json()
+      ? await (await fetch(this.host + "/my-tools", this.getConfig())).json()
       : myTools;
   }
 
@@ -113,9 +102,7 @@ export default class Controller {
       ? await (
           await fetch(
             "https://backend-farm.plantvsundead.com/farms/" + plantId,
-            {
-              headers: this.getHeaders(),
-            }
+            this.getConfig()
           )
         ).json()
       : plantDetail;
@@ -124,9 +111,10 @@ export default class Controller {
   async pvuPrice() {
     return !this.test
       ? await (
-          await fetch("https://pvu-bot-info.plantvsundead.com/price", {
-            headers: this.getHeaders(),
-          })
+          await fetch(
+            "https://pvu-bot-info.plantvsundead.com/price",
+            this.getConfig()
+          )
         ).json()
       : pvuPrice;
   }
@@ -136,21 +124,20 @@ export default class Controller {
       ? await (
           await fetch(
             "https://backend-farm-stg.plantvsundead.com/weather-today",
-            {
-              headers: this.getHeaders(),
-            }
+            this.getConfig()
           )
         ).json()
       : weather;
   }
 
-  getHeaders() {
+  getConfig() {
+    const headers = new Headers();
+
+    headers.append("Authorization", "Bearer " + this.token);
+
     return {
-      origin: "https://marketplace.plantvsundead.com",
-      Referer: "https://marketplace.plantvsundead.com/",
-      Authorization: "Bearer " + this.token,
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36",
+      redirect: "follow",
+      headers,
     };
   }
 
