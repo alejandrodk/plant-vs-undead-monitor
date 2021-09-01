@@ -16,6 +16,8 @@ import {
   GroupWrapper,
   GroupLabel,
   QuestionSign,
+  Donate,
+  DonateIcon,
 } from "./MainStyles";
 import Tutorial from "../Tutorial/Tutorial";
 import Modal from "../Modal/Modal";
@@ -36,6 +38,7 @@ function App() {
   const [utcTime, setUtcTime] = useState(getTime12HVerbose(new Date()));
   const [showTutorial, setShowTutorial] = useState(false);
   const [showSteps, setShowSteps] = useState(false);
+  const [showDonate, setShowDonate] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(async () => await refreshData(), 60 * 1000 * 5);
@@ -83,6 +86,15 @@ function App() {
     return difference < 60
       ? `${difference} ${t("main.group-minutes")}`
       : `${(difference / 60).toFixed(1)} ${t("main.group-hours")}`;
+  }
+
+  function copyToClipboard(text) {
+    const el = document.createElement("textarea");
+    el.value = text;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
   }
 
   return (
@@ -151,6 +163,33 @@ function App() {
           </InactiveFarm>
         )}
         <Tree src="/tree.png" />
+        <Donate>
+          <h3>¿Quieres apoyar al proyecto?</h3>
+          <DonateIcon
+            onClick={() => {
+              copyToClipboard("0x4fadffe72b191f081886b68485cf69be807a216b");
+              alert("Wallet USDT red ERC20 Copiado! ❤");
+            }}
+            src="/usdt.svg"
+            title="Copiar Wallet USDT red ERC20"
+          />
+          <DonateIcon
+            onClick={() => {
+              copyToClipboard("0x4fadffe72b191f081886b68485cf69be807a216b");
+              alert("Wallet BNB red BSC Copiado! ❤");
+            }}
+            src="/bnb.svg"
+            title="Copiar Wallet BNB red BSC"
+          />
+          <DonateIcon
+            onClick={() => {
+              copyToClipboard("0xD71ED67Ba0C78a5559a8a258A2BB355813AE105e");
+              alert("Wallet PVU red BSC Copiado! ❤");
+            }}
+            src="/pvu.svg"
+            title="Copiar Wallet PVU red BSC"
+          />
+        </Donate>
         <UpdatedTimeWrapper>
           <UpdatedTime>
             {

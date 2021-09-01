@@ -21,6 +21,7 @@ export const Container = styled.div`
     overflow-x: auto;
     padding: 5px;
     width: 98%;
+    margin-bottom: 10%;
   }
 `;
 
@@ -100,6 +101,7 @@ export const UpdatedTimeWrapper = styled.div`
   @media (max-width: 425px) {
     left: 0%;
     width: 100%;
+    bottom: 8%;
   }
 `;
 
@@ -142,4 +144,47 @@ export const QuestionSign = styled.span`
   border-radius: 50%;
   cursor: pointer;
   z-index: 3;
+`;
+
+export const Donate = styled.div`
+  position: fixed;
+  bottom: 3%;
+  left: 1%;
+  width: 400px;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  box-shadow: 0 5px 0 rgba(0,0,0,0.2);
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  color: gray;
+
+  & h3 {
+    margin: auto;
+    margin-right: 10px;
+  }
+
+  @media (max-width: 425px) {
+    font-size: 12px;
+    width: 92%;
+    left: 3%;
+    margin: auto;
+    padding: 5px;
+  }
+`;
+
+export const DonateIcon = styled.img`
+  width: 25px;
+  margin: auto;
+  cursor: pointer;
+  padding: 5px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+
+  &:hover {
+    transform: scale(1.2);
+  }
 `;

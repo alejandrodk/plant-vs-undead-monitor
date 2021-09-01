@@ -46,8 +46,8 @@ function PlantsContainerComp() {
         <Section>
           {plants &&
             [
-              ...plants.filter((plant) => plant.needWater == true),
-              ...plants.filter((plant) => plant.needWater == false),
+              ...plants?.filter((plant) => plant.needWater == true) || [],
+              ...plants?.filter((plant) => plant.needWater == false) || [],
             ].map((plant, ix) => <Plant plant={plant} key={ix} />)}
         </Section>
       )}
