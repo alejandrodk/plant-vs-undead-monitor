@@ -147,7 +147,7 @@ function App() {
                 }`}</GroupLabel>
                 <GroupLabel>{`${t("main.group-current")} ${
                   group?.currentGroup
-                }`}</GroupLabel>
+                } / ${group?.totalGroup}`}</GroupLabel>
                 <GroupLabel>{`${t("main.group-next")} ${getDifferenceInGroups(
                   group?.nextGroup
                 )}`}</GroupLabel>
