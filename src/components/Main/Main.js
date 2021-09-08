@@ -15,7 +15,6 @@ import {
   UTCTime,
   GroupWrapper,
   GroupLabel,
-  QuestionSign,
   Donate,
   DonateIcon,
 } from "./MainStyles";
@@ -38,10 +37,9 @@ function App() {
   const [utcTime, setUtcTime] = useState(getTime12HVerbose(new Date()));
   const [showTutorial, setShowTutorial] = useState(false);
   const [showSteps, setShowSteps] = useState(false);
-  const [showDonate, setShowDonate] = useState(false);
 
   useEffect(() => {
-    const timer = setInterval(async () => await refreshData(), 60 * 1000 * 5);
+    const timer = setInterval(async () => await refreshData(), 60 * 1000 * 15);
 
     if (token && !farmActive) {
       (async function () {
@@ -117,25 +115,6 @@ function App() {
           <PlantsContainer />
         ) : token ? (
           <InactiveFarm>
-            {/* <div
-              style={{
-                backgroundColor: "#ab473c",
-                padding: "5px",
-                borderRadius: "15px",
-              }}
-            >
-              <h3>⚠</h3>
-              <p>
-                debido a nuevos cambios de seguridad en la plataforma de PVU,
-                por el momento es necesario seguir los siguientes pasos para
-                poder disfrutar de PVU Monitor. <br />
-                <br />
-                Click aquí para conocer los pasos: 👉
-                <QuestionSign onClick={() => setShowSteps(true)}>
-                  ?
-                </QuestionSign>
-              </p>
-            </div> */}
             <Logo src="pvu-monitor-logo-2.png" />
             <h3>
               <Trans i18nKey="main.deny-farm" />
