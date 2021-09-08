@@ -12,6 +12,8 @@ function PlantsContainerComp() {
   const [togglePlants, setTogglePlants] = useState(true);
 
   useEffect(() => {
+    const timer = setInterval(async () => setPlants(null), 60 * 1000 * 20);
+
     if (!plants) {
       (async function () {
         const controller = new Controller(token);
@@ -20,6 +22,8 @@ function PlantsContainerComp() {
         setPlants(data);
       })();
     }
+
+    return () => clearInterval(timer);
   }, [plants]);
 
   return (
@@ -35,8 +39,8 @@ function PlantsContainerComp() {
         <Section>
           {plants &&
             [
-              ...(plants?.filter((plant) => plant.needWater == true) || []),
-              ...(plants?.filter((plant) => plant.needWater == false) || []),
+              ...(plants?.filter((plant) => plant.needWater || plant.hasCrow) || []),
+              ...(plants?.filter((plant) => !plant.needWater && !plant.hasCrow) || []),
             ].map((plant, ix) => <Plant plant={plant} key={ix} />)}
         </Section>
       )}

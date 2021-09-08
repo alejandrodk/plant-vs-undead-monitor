@@ -14,7 +14,7 @@ import applyTool from "../mocks/applyTool";
 
 export default class Controller {
   token;
-  test = true;
+  test = false;
   stage = "https://backend-farm-stg.plantvsundead.com";
   prod = "https://backend-farm.plantvsundead.com";
   proxy = "https://cors.bridged.cc/";
