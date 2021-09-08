@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Plant = styled.div`
-  ${({ water }) => {
-    return water ? `border: solid 3px red;` : "";
+  ${({ water, crow }) => {
+    return water || crow ? `border: solid 3px red;` : "";
   }}
   background-color: #161d29;
   box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2), inset 0 -5px 0 #2b4063,
@@ -46,6 +46,7 @@ export const CrowSVG = styled.img`
   position: absolute;
   top: -30px;
   left: 10px;
+  z-index: 99;
 `;
 
 export const PlantDataContainer = styled.div`

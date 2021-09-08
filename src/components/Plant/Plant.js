@@ -47,7 +47,7 @@ function PlantComp(props) {
   }
 
   return (
-    <Plant water={plant.needWater}>
+    <Plant water={plant.needWater} crow={plant?.hasCrow}>
       <PlantImageContainer>
         {plant.hasCrow && <CrowSVG src="/crow.png" />}
         <PlantSVG src={plant?.plant?.type == 1 ? "/sapling.svg" : "/mama.svg"} 
@@ -96,7 +96,7 @@ function PlantComp(props) {
       </ActiveItemsWrapper>
       <ProfitWrapper>
         <ProfitIcon src="/le.svg" />
-        <Profit>{plant?.rate.le || 0}</Profit>
+        <Profit>{`${plant?.totalHarvest} / ${plant?.rate.le || 0}`}</Profit>
         <ProfitIcon
           src="/dollar.svg"
           style={{ width: "12px" }}
