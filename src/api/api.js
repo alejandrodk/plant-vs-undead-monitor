@@ -10,10 +10,11 @@ import myTools from "../mocks/myTools";
 import plantDetail from "../mocks/plantDetail";
 import pvuPrice from "../mocks/pvuPrice";
 import weather from "../mocks/weather";
+import applyTool from "../mocks/applyTool";
 
 export default class Controller {
   token;
-  test = false;
+  test = true;
   stage = "https://backend-farm-stg.plantvsundead.com";
   prod = "https://backend-farm.plantvsundead.com";
   proxy = "https://cors.bridged.cc/";
@@ -22,18 +23,10 @@ export default class Controller {
     this.token = token;
   }
 
-  async availableTools() {
-    return !this.test
-      ? await (
-          await fetch(this.host + "/available-tools", this.getConfig())
-        ).json()
-      : availableTools;
-  }
-
   async dailyQuest() {
     return !this.test
       ? await (await fetch(this.host + "/daily-quest", this.getConfig())).json()
-      : dailyQuest;
+      : await this.fakeRequest(dailyQuest);
   }
 
   async farmingStats() {
@@ -41,13 +34,13 @@ export default class Controller {
       ? await (
           await fetch(this.host + "/farming-stats", this.getConfig())
         ).json()
-      : farmingStats;
+      : await this.fakeRequest(farmingStats);
   }
 
   async farmStatus() {
     return !this.test
       ? await (await fetch(this.host + "/farm-status", this.getConfig())).json()
-      : farmStatus;
+      : await this.fakeRequest(farmStatus);
   }
 
   async Land(latitud, longitud) {
@@ -72,26 +65,54 @@ export default class Controller {
       : await this.fakeRequest(landDetail);
   }
 
-  async myLand() {
-    return !this.test
-      ? await (
-          await fetch(this.host + "/farms?limit=10&offset=0", this.getConfig())
-        ).json()
-      : myLand;
-  }
-
-  async myTools() {
-    return !this.test
-      ? await (await fetch(this.host + "/my-tools", this.getConfig())).json()
-      : myTools;
-  }
-
   async plantDetail(plantId) {
     return !this.test
       ? await (
           await fetch(this.host + "/farms/" + plantId, this.getConfig())
         ).json()
-      : plantDetail;
+      : await this.fakeRequest(plantDetail);
+  }
+
+  async myLand() {
+    return !this.test
+      ? await (
+          await fetch(this.host + "/farms?limit=10&offset=0", this.getConfig())
+        ).json()
+      : await this.fakeRequest(myLand);
+  }
+
+  async availableTools() {
+    return !this.test
+      ? await (
+          await fetch(this.host + "/available-tools", this.getConfig())
+        ).json()
+      : await this.fakeRequest(availableTools);
+  }
+
+  async myTools() {
+    return !this.test
+      ? await (await fetch(this.host + "/my-tools", this.getConfig())).json()
+      : await this.fakeRequest(myTools);
+  }
+
+  async applyTool(toolId, plantId) {
+    return !this.test
+      ? await await (
+          await fetch(this.host + "/farms/apply-tool", {
+            ...this.getConfig(),
+            method: "POST",
+            body: JSON.stringify({
+              farmId: plantId,
+              toolId: toolId,
+              token: {
+                challenge: "default",
+                seccode: "default",
+                validate: "default",
+              },
+            }),
+          })
+        ).json()
+      : await this.fakeRequest(applyTool);
   }
 
   async pvuPrice() {
@@ -102,7 +123,7 @@ export default class Controller {
             this.getConfig()
           )
         ).json()
-      : pvuPrice;
+      : await this.fakeRequest(pvuPrice);
   }
 
   async weather() {
@@ -110,7 +131,7 @@ export default class Controller {
       ? await (
           await fetch(this.host + "/weather-today", this.getConfig())
         ).json()
-      : weather;
+      : await this.fakeRequest(weather);
   }
 
   getConfig() {

@@ -39,15 +39,23 @@ function App() {
   const [showSteps, setShowSteps] = useState(false);
 
   useEffect(() => {
-    const timer = setInterval(async () => await refreshData(), 60 * 1000 * 15);
+    //const timer = setInterval(async () => await refreshData(), 60 * 1000 * 15);
 
     if (token && !farmActive) {
       (async function () {
-        await refreshData();
+        //await refreshData();
+        const controller = new Controller(token);
+        const res = await controller.farmStatus();
+
+        const { status } = res.data;
+
+        if (status == 1) {
+          setFarmActive(true);
+        }
       })();
     }
 
-    return () => clearInterval(timer);
+    //return () => clearInterval(timer);
   }, [token, farmActive]);
 
   useEffect(() => {
@@ -58,21 +66,21 @@ function App() {
     return () => clearInterval(time);
   }, []);
 
-  async function refreshData() {
-    const controller = new Controller(token);
-    const res = await controller.farmStatus();
+  // async function refreshData() {
+  //    const controller = new Controller(token);
+  //    const res = await controller.farmStatus();
 
-    const { status } = res.data;
+  //    const { status } = res.data;
 
-    if (status == 1) {
-      setFarmActive(true);
-    }
+  //    if (status == 1) {
+  //      setFarmActive(true);
+  //    }
 
-    if (farmActive && status == 0) setFarmActive(false);
+  //    if (farmActive && status == 0) setFarmActive(false);
 
-    setGroup(res.data);
-    setLastUpdated(new Date());
-  }
+  //    setGroup(res.data);
+  //    setLastUpdated(new Date());
+  // }
 
   function getDifferenceInGroups(date) {
     const difference = differenceInMinutes(new Date(date), new Date());
