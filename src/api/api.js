@@ -99,7 +99,7 @@ export default class Controller {
     return !this.test
       ? await await (
           await fetch(this.host + "/farms/apply-tool", {
-            ...this.getConfig(),
+            ...this.getConfig({ json: true }),
             method: "POST",
             body: JSON.stringify({
               farmId: plantId,
@@ -134,10 +134,12 @@ export default class Controller {
       : await this.fakeRequest(weather);
   }
 
-  getConfig() {
+  getConfig({ json } = {}) {
     const headers = new Headers();
 
     headers.append("Authorization", "Bearer " + this.token);
+
+    if (json) headers.append("Content-Type", "application/json");
 
     return {
       redirect: "follow",

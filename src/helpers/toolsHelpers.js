@@ -1,4 +1,4 @@
-import { sleep } from "./utils";
+import { sleep, soundNotification } from "./utils";
 import Controller from "../api/api";
 
 const tools = {
@@ -11,12 +11,23 @@ export async function checkPlantsStatus(plants, token) {
     let result = await getPlantsUpdateHist();
 
     if (plants) {
-      await plants.forEach(async (plant) => {
+      await plants?.reduce(async (acc, plant) => {
+        await acc;
+
         const controller = new Controller(token);
 
         if (plant.needWater) {
-          const { data } = await controller.applyTool(tools.WATER, plant._id);
-          console.log(result);
+          soundNotification();
+
+          const { data, status } = await controller.applyTool(
+            tools.WATER,
+            plant._id
+          );
+
+          if (status == 556) alert("manual review required");
+          
+          if (data?.reward == 0) console.log("success water");
+
           result.updated.push({
             plant: plant._id,
             tool: "WATER",
@@ -28,7 +39,16 @@ export async function checkPlantsStatus(plants, token) {
         }
 
         if (plant.hasCrow) {
-          const { data } = await controller.applyTool(tools.CROW, plant._id);
+          soundNotification();
+
+          const { data, status } = await controller.applyTool(
+            tools.CROW,
+            plant._id
+          );
+
+          if (status == 556) alert("manual review required");
+          
+          if (data?.reward == 0) console.log("success crow");
 
           result.updated.push({
             plant: plant._id,
@@ -40,8 +60,8 @@ export async function checkPlantsStatus(plants, token) {
           await sleep(20);
         }
 
-        await sleep(20);
-      });
+        return sleep(20);
+      }, Promise.resolve());
     }
 
     await setPlantsUpdateHist(result);
