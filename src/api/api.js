@@ -18,7 +18,7 @@ export default class Controller {
   stage = "https://backend-farm-stg.plantvsundead.com";
   prod = "https://backend-farm.plantvsundead.com";
   proxy = "https://cors.bridged.cc/";
-  host = this.proxy + this.stage;
+  host = this.proxy + this.prod;
   constructor(token) {
     this.token = token;
   }
